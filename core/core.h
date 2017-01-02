@@ -4,6 +4,7 @@
 #include<list>
 #include "Globals.h"
 #include "Module.h"
+#include "ModuleSceneManager.h"
 
 #include "SDL/include/SDL.h"
 
@@ -54,6 +55,7 @@ public:
 	ModuleParticles* particles;
 
 	// Game modules ---
+	ModuleSceneManager* scene_manager;
 
 private:
 	main_states state;

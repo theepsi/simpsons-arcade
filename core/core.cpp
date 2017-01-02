@@ -7,6 +7,7 @@
 #include "ModuleFadeToBlack.h"
 #include "ModuleCollision.h"
 #include "ModuleParticles.h"
+#include "ModuleSceneManager.h"
 
 using namespace std;
 
@@ -23,6 +24,7 @@ Core::Core()
 	modules.push_back(audio = new ModuleAudio());
 
 	// Game Modules
+	modules.push_back(scene_manager = new ModuleSceneManager());
 
 	// Modules to draw on top of game logic
 	modules.push_back(collision = new ModuleCollision());

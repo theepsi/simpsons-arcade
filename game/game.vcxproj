@@ -149,7 +149,20 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="homer.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="marge.cpp" />
+    <ClCompile Include="margeIdleState.cpp" />
+    <ClCompile Include="margeWalkingState.cpp" />
+    <ClCompile Include="player.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="homer.h" />
+    <ClInclude Include="marge.h" />
+    <ClInclude Include="margeIdleState.h" />
+    <ClInclude Include="margeWalkingState.h" />
+    <ClInclude Include="player.h" />
+    <ClInclude Include="state.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
