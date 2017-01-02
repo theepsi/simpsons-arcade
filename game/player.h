@@ -18,6 +18,7 @@ public:
 	void PreUpdate();
 	void Update();
 	void PostUpdate();
+	bool flipped = false;
 	
 	Animation GetCurrentAnimation() {
 		return current_animation;
