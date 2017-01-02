@@ -13,6 +13,8 @@ Marge::~Marge() {
 
 bool Marge::Start() {
 
+	speed = 2.f;
+
 	texture = App->textures->Load("resources/marge/marge.png");
 
 	Animation idle;

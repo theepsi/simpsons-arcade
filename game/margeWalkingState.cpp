@@ -17,21 +17,21 @@ void MargeWalkingState::Update(Player & player)
 
 	if (App->input->GetKey(SDL_SCANCODE_A) == KEY_REPEAT)
 	{
-		player.position.x -= player.speed;
+		player.position.x -= (int)player.speed;
 	}
 
 	if (App->input->GetKey(SDL_SCANCODE_D) == KEY_REPEAT)
 	{
-		player.position.x += player.speed;
+		player.position.x += (int)player.speed;
 	}
 
 	if (App->input->GetKey(SDL_SCANCODE_S) == KEY_REPEAT)
 	{
-		player.position.y += player.speed;
+		player.position.y += (int)player.speed;
 	}
 
 	if (App->input->GetKey(SDL_SCANCODE_W) == KEY_REPEAT)
 	{
-		player.position.y -= player.speed;
+		player.position.y -= (int)player.speed;
 	}
 }
