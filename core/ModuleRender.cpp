@@ -138,10 +138,9 @@ bool ModuleRender::MyBlit(SDL_Texture* texture, int x, int y, SDL_Rect* section,
 	rect.h *= SCREEN_SIZE;
 
 	if (flipped) {
-		SDL_RendererFlip flip = SDL_FLIP_VERTICAL;
-		SDL_Point center = { rect.w/2, rect.h/2 };
+		SDL_RendererFlip flip = SDL_FLIP_HORIZONTAL;
 
-		if (SDL_RenderCopyEx(renderer, texture, section, &rect, 180, &center, flip) != 0)
+		if (SDL_RenderCopyEx(renderer, texture, section, &rect, NULL, NULL, flip) != 0)
 		{
 			LOG("Cannot blit to screen. SDL_RenderCopy error: %s", SDL_GetError());
 			ret = false;
