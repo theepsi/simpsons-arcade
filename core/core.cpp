@@ -8,6 +8,7 @@
 #include "ModuleCollision.h"
 #include "ModuleParticles.h"
 #include "ModuleSceneManager.h"
+#include "ModuleFonts.h"
 
 using namespace std;
 
@@ -22,6 +23,7 @@ Core::Core()
 	modules.push_back(renderer = new ModuleRender());
 	modules.push_back(textures = new ModuleTextures());
 	modules.push_back(audio = new ModuleAudio());
+	modules.push_back(fonts = new ModuleFonts());
 
 	// Game Modules
 	modules.push_back(scene_manager = new ModuleSceneManager());
