@@ -22,6 +22,11 @@ int main(int argc, char ** argv)
 
 	int main_return = App->GameLoop();
 
+	player->CleanUp();
+	RELEASE(player);
+	RELEASE(scene);
+	RELEASE(App);
+
 	LOG("Bye :)\n");
 	return main_return;
 }

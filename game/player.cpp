@@ -23,7 +23,7 @@ void Player::Update() {
 
 	App->renderer->MyBlit(texture, position.x, position.y, current_frame, 1.f, flipped);
 
-	//TODO: TEXT TEST, ITS JUST A SAMPLE
+	//TODO: TEXT TEST
 	ModuleFonts::Font* font = App->fonts->Load("resources/fonts/simpsons-font.png", "abcdefghijklmnopqrstuvwxyz0123456789.,'''?!@_#$%&()+-/:", 1);
 
 	App->fonts->Blit(100, 50, font, "hola, me llamo marge.");
@@ -31,8 +31,15 @@ void Player::Update() {
 
 	state->Update(*this);
 
+	RELEASE(font);
+
 }
 
 void Player::PostUpdate() {
 
+}
+
+void Player::CleanUp()
+{
+	RELEASE(state);
 }

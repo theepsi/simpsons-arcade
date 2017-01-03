@@ -5,7 +5,8 @@
 
 class MargeWalkingState : public State {
 public:
-	MargeWalkingState() {}
+	MargeWalkingState();
+	~MargeWalkingState();
 	void Update(Player& player);
 };
 

@@ -5,7 +5,8 @@
 
 class MargeIdleState : public State {
 public:
-	MargeIdleState() {}
+	MargeIdleState();
+	~MargeIdleState();
 	void Update(Player& player);
 };
 

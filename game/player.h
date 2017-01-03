@@ -3,6 +3,7 @@
 
 #include "gameObject.h"
 #include "Animation.h"
+#include "state.h"
 #include <map>
 
 struct SDL_Texture;
@@ -18,10 +19,11 @@ public:
 	void PreUpdate();
 	void Update();
 	void PostUpdate();
+	void CleanUp();
 	bool flipped = false;
 	
-	Animation GetCurrentAnimation() {
-		return current_animation;
+	Animation* GetCurrentAnimation() {
+		return &current_animation;
 	}
 
 	void SetCurrentAnimation(const string& name) {
@@ -35,7 +37,7 @@ public:
 	}
 
 	void ChangeState(State* next_state, const string& anim) {
-		//RELEASE(state);
+		RELEASE(state);
 		SetCurrentAnimation(anim);
 		state = next_state;
 	}
@@ -43,7 +45,7 @@ public:
 private:
 	map<string, Animation> animations;
 	Animation current_animation;
-	State* state;
+	State* state = nullptr;
 
 protected:
 	SDL_Texture* texture;

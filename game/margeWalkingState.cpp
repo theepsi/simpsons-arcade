@@ -2,7 +2,16 @@
 #include "player.h"
 #include "margeIdleState.h"
 #include "margeWalkingState.h"
+#include "margeAttack1State.h"
 #include "ModuleInput.h"
+
+MargeWalkingState::MargeWalkingState()
+{
+}
+
+MargeWalkingState::~MargeWalkingState()
+{
+}
 
 void MargeWalkingState::Update(Player & player)
 {
@@ -13,6 +22,24 @@ void MargeWalkingState::Update(Player & player)
 
 		player.ChangeState(new MargeIdleState, "idle");
 
+	}
+
+	if (App->input->GetKey(SDL_SCANCODE_K) == KEY_DOWN) {
+		player.ChangeState(new MargeAttack1State, "attack_1");
+	}
+
+
+	if (App->input->GetKey(SDL_SCANCODE_W) == KEY_DOWN) {
+		player.SetCurrentAnimation("walking_up");
+	}
+
+	if (App->input->GetKey(SDL_SCANCODE_W) == KEY_UP) {
+		player.SetCurrentAnimation("walking");
+	}
+
+	if (App->input->GetKey(SDL_SCANCODE_W) == KEY_REPEAT)
+	{
+		player.position.y -= (int)player.speed;
 	}
 
 	if (App->input->GetKey(SDL_SCANCODE_A) == KEY_REPEAT)
@@ -32,16 +59,5 @@ void MargeWalkingState::Update(Player & player)
 		player.position.y += (int)player.speed;
 	}
 
-	if (App->input->GetKey(SDL_SCANCODE_W) == KEY_DOWN) {
-		player.SetCurrentAnimation("walking_up");
-	}
-
-	if (App->input->GetKey(SDL_SCANCODE_W) == KEY_UP) {
-		player.SetCurrentAnimation("walking");
-	}
-
-	if (App->input->GetKey(SDL_SCANCODE_W) == KEY_REPEAT)
-	{
-		player.position.y -= (int)player.speed;
-	}
+	
 }

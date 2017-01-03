@@ -2,6 +2,7 @@
 #include "core.h"
 #include "ModuleFonts.h"
 #include "ModuleRender.h"
+#include "ModuleTextures.h"
 #include "SDL/include/SDL.h"
 
 #include "SDL_image/include/SDL_image.h"
@@ -37,6 +38,14 @@ update_status ModuleFonts::PostUpdate()
 
 bool ModuleFonts::CleanUp()
 {
+	/*LOG("Freeing textures and Image library for FONTS");
+
+	for (map<int, Font*>::iterator it = fonts.begin(); it != fonts.end(); ++it) {
+		App->textures->Unload(it->second->texture);
+		RELEASE(it->second);
+	}
+
+	fonts.clear();*/
 	return true;
 }
 
