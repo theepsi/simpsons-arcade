@@ -3,6 +3,7 @@
 
 #include "Module.h"
 #include "Globals.h"
+#include <map>
 
 using namespace std;
 
@@ -16,7 +17,6 @@ public:
 	struct Font {
 		SDL_Texture* texture;
 		string mask;
-		int id;
 	};
 	ModuleFonts();
 	~ModuleFonts();
@@ -30,7 +30,17 @@ public:
 	bool Blit(int x, int y, Font* font, const string& text);
 	Font* Load(const char* path, const string& mask, int id);
 
-	list<Font*> fonts;
+	int SearchInMask(const string& mask, const char& c) {
+		int ret = 0;
+		for (string::const_iterator it = mask.begin(); it != mask.end(); ++it) {
+			if (*it == c) {
+				return distance(mask.begin(), it);
+			}
+		}
+		return ret;
+	}
+
+	map<int, Font*> fonts;
 	SDL_Renderer* renderer = nullptr;
 
 };

@@ -1,6 +1,11 @@
 #include "Globals.h"
 #include "core.h"
 #include "ModuleFonts.h"
+#include "ModuleRender.h"
+#include "SDL/include/SDL.h"
+
+#include "SDL_image/include/SDL_image.h"
+#pragma comment( lib, "SDL_image/libx86/SDL2_image.lib" )
 
 ModuleFonts::ModuleFonts()
 {
@@ -38,35 +43,55 @@ bool ModuleFonts::CleanUp()
 bool ModuleFonts::Blit(int x, int y, Font* font, const string& text)
 {
 	bool ret = true;
-	/*SDL_Rect rect;
-	rect.x = (int)x * SCREEN_SIZE;
-	rect.y = (int)y * SCREEN_SIZE;
+	SDL_Rect section = {0, 0, 0, 0};
 
-	if (section != NULL)
-	{
-		rect.w = section->w;
-		rect.h = section->h;
+	for (string::const_iterator it = text.begin(); it != text.end(); ++it) {
+		if (*it == (const char)32) {
+			x += 8;
+		}
+		else {
+			int index = SearchInMask(font->mask, *it);
+			SDL_Rect section = { 8*index, 0, 8, 9 };
+			App->renderer->Blit(font->texture, x, y, &section);
+			x += 8;
+		}	
 	}
-	else
-	{
-		SDL_QueryTexture(font->texture, NULL, NULL, &rect.w, &rect.h);
-	}
 
-	rect.w *= SCREEN_SIZE;
-	rect.h *= SCREEN_SIZE;
-
-	if (SDL_RenderCopy(renderer, font->texture, section, &rect) != 0)
-	{
-		LOG("Cannot blit to screen. SDL_RenderCopy error: %s", SDL_GetError());
-		ret = false;
-	}*/
 
 	return ret;
 }
 
 ModuleFonts::Font* ModuleFonts::Load(const char* path, const string& mask, int id)
 {
-	return nullptr;
+	SDL_Texture* texture = nullptr;
+	SDL_Surface* surface = IMG_Load(path);
+
+	Font* font = new Font();
+
+	if (surface == nullptr)
+	{
+		LOG("Could not load surface with path: %s. IMG_Load: %s", path, IMG_GetError());
+	}
+	else
+	{
+		texture = SDL_CreateTextureFromSurface(App->renderer->renderer, surface);
+
+		if (texture == nullptr)
+		{
+			LOG("Unable to create texture from surface! SDL Error: %s\n", SDL_GetError());
+		}
+		else
+		{
+			
+			font->texture = texture;
+			font->mask = mask;
+			fonts[id] = font;
+		}
+
+		SDL_FreeSurface(surface);
+	}
+
+	return font;
 }
 
 
