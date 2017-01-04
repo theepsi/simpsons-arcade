@@ -39,7 +39,7 @@ void MargeWalkingState::Update(Player & player)
 
 	if (App->input->GetKey(SDL_SCANCODE_W) == KEY_REPEAT)
 	{
-		player.position.y -= (int)player.speed;
+		player.position.z -= (int)player.speed;
 	}
 
 	if (App->input->GetKey(SDL_SCANCODE_A) == KEY_REPEAT)
@@ -56,7 +56,7 @@ void MargeWalkingState::Update(Player & player)
 
 	if (App->input->GetKey(SDL_SCANCODE_S) == KEY_REPEAT)
 	{
-		player.position.y += (int)player.speed;
+		player.position.z += (int)player.speed;
 	}
 
 	

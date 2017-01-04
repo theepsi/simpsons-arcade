@@ -1,7 +1,7 @@
 #ifndef _GAME_OBJECT
 #define _GAME_OBJECT
 
-#include "Point.h"
+#include "point3D.h"
 
 class GameObject {
 public:
@@ -23,7 +23,7 @@ public:
 		return enabled;
 	}
 
-	iPoint position;
+	iPoint3D position;
 private:
 	//GameObject true by default
 	bool enabled = true;

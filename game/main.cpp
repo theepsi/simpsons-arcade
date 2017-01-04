@@ -11,8 +11,9 @@ int main(int argc, char ** argv)
 	Marge* player = new Marge();
 
 	player->position.x = 0;
-	player->position.y = 100;
-
+	player->position.y = 0;
+	player->position.z = 100;
+	
 	scene->game_objects.push_back(player);
 
 	LOG("Core Creation --------------");

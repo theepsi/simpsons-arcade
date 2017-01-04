@@ -5,6 +5,8 @@
 #include "ModuleFonts.h"
 #include "state.h"
 
+#include <sstream>
+
 Player::Player() {
 
 }
@@ -21,16 +23,18 @@ void Player::Update() {
 
 	SDL_Rect* current_frame = &current_animation.GetCurrentFrame();
 
-	App->renderer->MyBlit(texture, position.x, position.y, current_frame, 1.f, flipped);
+	App->renderer->MyBlit(texture, position.x, position.y, position.z, current_frame, 1.f, flipped);
+
+	state->Update(*this);
 
 	//TODO: TEXT TEST
 	ModuleFonts::Font* font = App->fonts->Load("resources/fonts/simpsons-font.png", "abcdefghijklmnopqrstuvwxyz0123456789.,'''?!@_#$%&()+-/:", 1);
 
-	App->fonts->Blit(100, 50, font, "hola, me llamo marge.");
-	App->fonts->Blit(125, 60, font, "tantrum!!!!");
-
-	state->Update(*this);
-
+	ostringstream oss;
+	oss << "x: " << position.x << " y: " << position.y << " z: " << position.z;
+	string coords = oss.str();
+	App->fonts->Blit(100, 50, font, coords);
+	
 	RELEASE(font);
 
 }
