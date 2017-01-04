@@ -4,6 +4,7 @@
 #include "margeWalkingState.h"
 #include "margeAttack1State.h"
 #include "ModuleInput.h"
+#include "margeJumpState.h"
 
 MargeWalkingState::MargeWalkingState()
 {
@@ -28,6 +29,9 @@ void MargeWalkingState::Update(Player & player)
 		player.ChangeState(new MargeAttack1State, "attack_1");
 	}
 
+	if (App->input->GetKey(SDL_SCANCODE_J) == KEY_DOWN) {
+		player.ChangeState(new MargeJumpState, "jump");
+	}
 
 	if (App->input->GetKey(SDL_SCANCODE_W) == KEY_DOWN) {
 		player.SetCurrentAnimation("walking_up");
@@ -58,6 +62,5 @@ void MargeWalkingState::Update(Player & player)
 	{
 		player.position.z += (int)player.speed;
 	}
-
 	
 }

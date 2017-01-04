@@ -3,6 +3,7 @@
 #include "margeIdleState.h"
 #include "margeWalkingState.h"
 #include "margeAttack1State.h"
+#include "margeJumpState.h"
 #include "ModuleInput.h"
 
 MargeIdleState::MargeIdleState()
@@ -28,5 +29,9 @@ void MargeIdleState::Update(Player& player)
 
 	if (App->input->GetKey(SDL_SCANCODE_K) == KEY_DOWN) {
 		player.ChangeState(new MargeAttack1State, "attack_1");
+	}
+
+	if (App->input->GetKey(SDL_SCANCODE_J) == KEY_DOWN) {
+		player.ChangeState(new MargeJumpState, "jump");
 	}
 }

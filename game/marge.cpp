@@ -78,6 +78,32 @@ bool Marge::Start() {
 
 	AddAnimation("attack_1", attack_1);
 
+	Animation attack_2;
+	attack_2.frames.push_back({ 0, 400, 100, 100 });
+	attack_2.frames.push_back({ 100, 400, 100, 100 });
+	attack_2.frames.push_back({ 200, 400, 100, 100 });
+	attack_2.frames.push_back({ 300, 400, 100, 100 });
+	attack_2.frames.push_back({ 400, 400, 100, 100 });
+	attack_2.speed = 0.17f;
+
+	AddAnimation("attack_2", attack_2);
+
+	Animation jump;
+	jump.frames.push_back({ 0, 500, 100, 100 });
+	jump.frames.push_back({ 100, 500, 100, 100 });
+	jump.speed = 0.17f;
+	jump.loop = false;
+
+	AddAnimation("jump", jump);
+
+	Animation fall;
+	fall.frames.push_back({ 0, 600, 100, 100 });
+	fall.speed = 0.17f;
+	fall.loop = false;
+
+	AddAnimation("fall", fall);
+
+
 	//TODO: ADD MORE ANIMATIONS
 
 	ChangeState(new MargeIdleState, "idle");

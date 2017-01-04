@@ -154,6 +154,7 @@
     <ClCompile Include="marge.cpp" />
     <ClCompile Include="margeAttack1State.cpp" />
     <ClCompile Include="margeIdleState.cpp" />
+    <ClCompile Include="margeJumpState.cpp" />
     <ClCompile Include="margeWalkingState.cpp" />
     <ClCompile Include="player.cpp" />
   </ItemGroup>
@@ -162,6 +163,7 @@
     <ClInclude Include="marge.h" />
     <ClInclude Include="margeAttack1State.h" />
     <ClInclude Include="margeIdleState.h" />
+    <ClInclude Include="margeJumpState.h" />
     <ClInclude Include="margeWalkingState.h" />
     <ClInclude Include="player.h" />
     <ClInclude Include="state.h" />

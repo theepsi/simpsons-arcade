@@ -15,6 +15,7 @@ public:
 	virtual ~Player();
 	
 	float speed = 1.f;
+	float jump_speed = 5.f;
 	bool Start() = 0;
 	void PreUpdate();
 	void Update();
