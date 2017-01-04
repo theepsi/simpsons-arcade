@@ -1,6 +1,7 @@
 #include "core.h"
 #include "homer.h"
 #include "marge.h"
+#include "cementery.h"
 #include "scene.h"
 
 int main(int argc, char ** argv)
@@ -9,11 +10,13 @@ int main(int argc, char ** argv)
 
 	Scene* scene = new Scene();
 	Marge* player = new Marge();
+	Cementery* cement = new Cementery();
 
 	player->position.x = 0;
 	player->position.y = 0;
 	player->position.z = 100;
 	
+	scene->game_objects.push_back(cement);
 	scene->game_objects.push_back(player);
 
 	LOG("Core Creation --------------");
@@ -25,6 +28,7 @@ int main(int argc, char ** argv)
 
 	player->CleanUp();
 	RELEASE(player);
+	RELEASE(cement);
 	RELEASE(scene);
 	RELEASE(App);
 

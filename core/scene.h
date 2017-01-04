@@ -48,8 +48,7 @@ public:
 	}
 
 	list<GameObject*> game_objects;
-	SDL_Texture* backgorund;
-	SDL_Texture* foreground;
+	SDL_Texture* UI;
 
 };
 

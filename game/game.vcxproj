@@ -149,6 +149,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="cementery.cpp" />
     <ClCompile Include="homer.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="marge.cpp" />
@@ -159,6 +160,7 @@
     <ClCompile Include="player.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="cementery.h" />
     <ClInclude Include="homer.h" />
     <ClInclude Include="marge.h" />
     <ClInclude Include="margeAttack1State.h" />
