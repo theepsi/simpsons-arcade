@@ -6,6 +6,13 @@
 
 using namespace std;
 
+bool collisionMatrix[4][4] = {
+	{false, true, true, false},
+	{true, false, true, false},
+	{true, true, true, false},
+	{false, false, false, false}
+};
+
 ModuleCollision::ModuleCollision()
 {
 }
@@ -33,7 +40,6 @@ update_status ModuleCollision::PreUpdate()
 
 update_status ModuleCollision::Update()
 {
-	// TODO 8: Check collisions between all colliders. 
 	// After making it work, review that you are doing the minumum checks possible
 	for (list<Collider*>::iterator it = colliders.begin(); it != colliders.end(); ++it)
 	{
@@ -41,7 +47,9 @@ update_status ModuleCollision::Update()
 		for (list<Collider*>::iterator it2 = ++it; it2 != colliders.end(); ++it2)
 		{
 			Collider* col2 = (*it2);
-			col->CheckCollision(col2->rect);
+			if (collisionMatrix[col->col_against][col2->col_against] && col->CheckCollision(col2->rect)) {
+				//TODO: Notification stuff
+			}
 		}
 	}
 
@@ -86,7 +94,6 @@ Collider* ModuleCollision::AddCollider(const SDL_Rect& rect)
 
 bool Collider::CheckCollision(const SDL_Rect& r) const
 {
-	// TODO 7: Create by hand (avoid consulting the internet) a simple collision test
 	// Return true if the argument and the own rectangle are intersecting
 	return !((rect.x+rect.w) > r.x || (r.x + r.w) > rect.x || (r.x + r.h) > rect.x || (rect.x + rect.h) > r.x);
 }
