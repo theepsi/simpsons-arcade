@@ -14,7 +14,7 @@ MargeWalkingState::~MargeWalkingState()
 {
 }
 
-void MargeWalkingState::Update(Player & player)
+void MargeWalkingState::Update(Character& player)
 {
 	if (App->input->GetKey(SDL_SCANCODE_A) == KEY_IDLE &&
 		App->input->GetKey(SDL_SCANCODE_D) == KEY_IDLE &&

@@ -150,6 +150,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="cementery.cpp" />
+    <ClCompile Include="character.cpp" />
+    <ClCompile Include="enemy.cpp" />
     <ClCompile Include="homer.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="marge.cpp" />
@@ -158,9 +160,13 @@
     <ClCompile Include="margeJumpState.cpp" />
     <ClCompile Include="margeWalkingState.cpp" />
     <ClCompile Include="player.cpp" />
+    <ClCompile Include="royd.cpp" />
+    <ClCompile Include="roydIdleState.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="cementery.h" />
+    <ClInclude Include="character.h" />
+    <ClInclude Include="enemy.h" />
     <ClInclude Include="homer.h" />
     <ClInclude Include="marge.h" />
     <ClInclude Include="margeAttack1State.h" />
@@ -168,6 +174,8 @@
     <ClInclude Include="margeJumpState.h" />
     <ClInclude Include="margeWalkingState.h" />
     <ClInclude Include="player.h" />
+    <ClInclude Include="royd.h" />
+    <ClInclude Include="roydIdleState.h" />
     <ClInclude Include="state.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

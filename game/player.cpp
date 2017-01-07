@@ -7,16 +7,13 @@
 
 #include <sstream>
 
-Player::Player() {
 
+Player::Player()
+{
 }
 
-Player::~Player() {
-
-}
-
-void Player::PreUpdate() {
-
+Player::~Player()
+{
 }
 
 void Player::Update() {
@@ -37,13 +34,4 @@ void Player::Update() {
 	
 	RELEASE(font);
 
-}
-
-void Player::PostUpdate() {
-
-}
-
-void Player::CleanUp()
-{
-	RELEASE(state);
 }

@@ -16,7 +16,7 @@ MargeJumpState::~MargeJumpState()
 {
 }
 
-void MargeJumpState::Update(Player& player)
+void MargeJumpState::Update(Character& player)
 {
 	if (App->input->GetKey(SDL_SCANCODE_W) == KEY_REPEAT)
 	{

@@ -7,7 +7,7 @@ class MargeWalkingState : public State {
 public:
 	MargeWalkingState();
 	~MargeWalkingState();
-	void Update(Player& player);
+	void Update(Character& player);
 };
 
 #endif

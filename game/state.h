@@ -1,13 +1,13 @@
 #ifndef _STATE
 #define _STATE
 
-class Player;
+class Character;
 
 class State {
 public:
 	State() {}
 	virtual ~State() {}
-	virtual void Update(Player& player) {}
+	virtual void Update(Character& player) {}
 };
 
 #endif

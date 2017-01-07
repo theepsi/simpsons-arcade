@@ -14,7 +14,7 @@ MargeIdleState::~MargeIdleState()
 {
 }
 
-void MargeIdleState::Update(Player& player)
+void MargeIdleState::Update(Character& player)
 {
 	if (App->input->GetKey(SDL_SCANCODE_A) == KEY_REPEAT ||
 		App->input->GetKey(SDL_SCANCODE_S) == KEY_REPEAT ||

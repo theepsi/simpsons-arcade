@@ -7,7 +7,7 @@ class MargeIdleState : public State {
 public:
 	MargeIdleState();
 	~MargeIdleState();
-	void Update(Player& player);
+	void Update(Character& player);
 };
 
 #endif

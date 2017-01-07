@@ -13,7 +13,7 @@ MargeAttack1State::~MargeAttack1State()
 {
 }
 
-void MargeAttack1State::Update(Player& player)
+void MargeAttack1State::Update(Character& player)
 {
 	if (App->input->GetKey(SDL_SCANCODE_A) == KEY_DOWN ||
 		App->input->GetKey(SDL_SCANCODE_D) == KEY_DOWN ||

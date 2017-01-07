@@ -7,7 +7,7 @@ class MargeAttack1State : public State {
 public:
 	MargeAttack1State();
 	~MargeAttack1State();
-	void Update(Player& player);
+	void Update(Character& player);
 };
 
 #endif

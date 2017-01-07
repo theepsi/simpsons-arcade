@@ -7,7 +7,7 @@ class MargeJumpState : public State {
 public:
 	MargeJumpState();
 	~MargeJumpState();
-	void Update(Player& player);
+	void Update(Character& player);
 
 	bool going_up;
 };

@@ -13,7 +13,12 @@ Marge::~Marge() {
 
 bool Marge::Start() {
 
+	position.x = 0;
+	position.y = 0;
+	position.z = 100;
+	
 	speed = 2.f;
+	jump_speed = 5.f;
 
 	texture = App->textures->Load("resources/marge/marge_sprite.png");
 
