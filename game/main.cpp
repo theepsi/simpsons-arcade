@@ -14,11 +14,6 @@ int main(int argc, char ** argv)
 	Royd* enemy_1 = new Royd();
 	Cementery* cement = new Cementery();
 
-	
-	/*scene->game_objects.push_back(cement);
-	scene->game_objects.push_back(player);
-	scene->game_objects.push_back(enemy_1);*/
-
 	LOG("Core Creation --------------");
 	Core* App = new Core();	
 
@@ -28,14 +23,6 @@ int main(int argc, char ** argv)
 	App->scene_manager->AddGameObjectToScene(enemy_1);
 
 	int main_return = App->GameLoop();
-
-	//player->CleanUp();
-	//enemy_1->CleanUp();
-	////TODO: Scene Manager call clean of all their objects
-	//RELEASE(player);
-	//RELEASE(enemy_1);
-	//RELEASE(cement->section);
-	//RELEASE(cement);
 
 	RELEASE(scene);
 	RELEASE(App);
