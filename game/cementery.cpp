@@ -25,9 +25,7 @@ void Cementery::PreUpdate()
 void Cementery::Update()
 {
 	//TODO: Change this when player moves...
-	SDL_Rect section = {4, 262, 2304, 256};
-
-	App->renderer->Blit(texture, 0, 0, &section);
+	App->renderer->PriorityBlit(texture, 0, 0, section);
 }
 
 void Cementery::PostUpdate()

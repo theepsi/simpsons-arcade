@@ -27,8 +27,11 @@ int main(int argc, char ** argv)
 	int main_return = App->GameLoop();
 
 	player->CleanUp();
+	//TODO: Scene Manager call clean of all their objects
 	RELEASE(player);
+	RELEASE(cement->section);
 	RELEASE(cement);
+
 	RELEASE(scene);
 	RELEASE(App);
 

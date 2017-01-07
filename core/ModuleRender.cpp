@@ -5,7 +5,7 @@
 #include "ModuleInput.h"
 #include "SDL/include/SDL.h"
 
-#define OFFSET_ANGLE 0.349066  //20º
+#define OFFSET_ANGLE 0.349066  //aprox. 20 degree
 
 ModuleRender::ModuleRender()
 {
@@ -66,6 +66,32 @@ update_status ModuleRender::Update()
 	if(App->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_REPEAT)
 		App->renderer->camera.x -= speed;
 
+
+	while (!priority_queue_renderer.empty())
+	{
+		RenderGameObject* gameObject = priority_queue_renderer.top();
+		if (gameObject->flipped) {
+			SDL_RendererFlip flip = SDL_FLIP_HORIZONTAL;
+
+			if (SDL_RenderCopyEx(renderer, gameObject->texture, gameObject->section, gameObject->rect, NULL, NULL, flip) != 0)
+			{
+				LOG("Cannot blit to screen. SDL_RenderCopy error: %s", SDL_GetError());
+				return UPDATE_ERROR;
+			}
+
+		}
+		else {
+			if (SDL_RenderCopy(renderer, gameObject->texture, gameObject->section, gameObject->rect) != 0)
+			{
+				LOG("Cannot blit to screen. SDL_RenderCopy error: %s", SDL_GetError());
+				return UPDATE_ERROR;
+			}
+		}
+		RELEASE(gameObject->rect);
+		RELEASE(gameObject);
+		priority_queue_renderer.pop();
+	}
+
 	return UPDATE_CONTINUE;
 }
 
@@ -78,6 +104,14 @@ update_status ModuleRender::PostUpdate()
 // Called before quitting
 bool ModuleRender::CleanUp()
 {
+	LOG("Destroying RenderGameObjects");
+	while (!priority_queue_renderer.empty())
+	{
+		RenderGameObject* gameObject = priority_queue_renderer.top();
+		RELEASE(gameObject->rect);
+		RELEASE(gameObject);
+		priority_queue_renderer.pop();
+	}
 	LOG("Destroying renderer");
 
 	//Destroy window
@@ -117,6 +151,71 @@ bool ModuleRender::Blit(SDL_Texture* texture, int x, int y, SDL_Rect* section, f
 	}
 
 	return ret;
+}
+
+void ModuleRender::PriorityBlit(SDL_Texture * texture, int x, int y, SDL_Rect * section, float speed, bool flipped)
+{
+	bool ret = true;
+	SDL_Rect* rect = new SDL_Rect;
+
+	rect->x = (int)(camera.x * speed) + x * SCREEN_SIZE;
+	rect->y = (int)(camera.y * speed) + y * SCREEN_SIZE;
+
+	if (section != NULL)
+	{
+		rect->w = section->w;
+		rect->h = section->h;
+	}
+	else
+	{
+		SDL_QueryTexture(texture, NULL, NULL, &rect->w, &rect->h);
+	}
+
+	rect->w *= SCREEN_SIZE;
+	rect->h *= SCREEN_SIZE;
+
+
+	RenderGameObject* rgo = new RenderGameObject();
+	rgo->texture = texture;
+	rgo->section = section;
+	rgo->rect = rect;
+	rgo->priority = -1;
+	rgo->flipped = flipped;
+
+	priority_queue_renderer.emplace(rgo);
+}
+
+void ModuleRender::PriorityBlit3D(SDL_Texture* texture, int x, int y, int z, SDL_Rect* section, float speed, bool flipped)
+{
+	bool ret = true;
+	SDL_Rect* rect = new SDL_Rect;
+
+	rect->x = (int)(camera.x * speed) + x * SCREEN_SIZE;
+	y += z * (int)round(cos(OFFSET_ANGLE));
+	rect->y = (int)(camera.y * speed) + y * SCREEN_SIZE;
+
+	if (section != NULL)
+	{
+		rect->w = section->w;
+		rect->h = section->h;
+	}
+	else
+	{
+		SDL_QueryTexture(texture, NULL, NULL, &rect->w, &rect->h);
+	}
+
+	rect->w *= SCREEN_SIZE;
+	rect->h *= SCREEN_SIZE;
+
+
+	RenderGameObject* rgo = new RenderGameObject();
+	rgo->texture = texture;
+	rgo->section = section;
+	rgo->rect = rect;
+	rgo->priority = z;
+	rgo->flipped = flipped;
+	
+	priority_queue_renderer.emplace(rgo);
 }
 
 bool ModuleRender::Blit3D(SDL_Texture* texture, int x, int y, int z, SDL_Rect* section, float speed)

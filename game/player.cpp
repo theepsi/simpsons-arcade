@@ -23,7 +23,7 @@ void Player::Update() {
 
 	SDL_Rect* current_frame = &current_animation.GetCurrentFrame();
 
-	App->renderer->MyBlit(texture, position.x, position.y, position.z, current_frame, 1.f, flipped);
+	App->renderer->PriorityBlit3D(texture, position.x, position.y, position.z, current_frame, 1.f, flipped);
 
 	state->Update(*this);
 
