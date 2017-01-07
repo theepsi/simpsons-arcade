@@ -33,7 +33,8 @@ void Character::PostUpdate() {
 
 }
 
-void Character::CleanUp()
+bool Character::CleanUp()
 {
 	RELEASE(state);
+	return true;
 }

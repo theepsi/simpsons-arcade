@@ -20,7 +20,7 @@ public:
 	void PreUpdate();
 	void Update();
 	void PostUpdate();
-	void CleanUp();
+	bool CleanUp();
 	bool flipped = false;
 
 	Animation* GetCurrentAnimation() {

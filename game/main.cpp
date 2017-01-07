@@ -29,13 +29,13 @@ int main(int argc, char ** argv)
 
 	int main_return = App->GameLoop();
 
-	player->CleanUp();
-	enemy_1->CleanUp();
-	//TODO: Scene Manager call clean of all their objects
-	RELEASE(player);
-	RELEASE(enemy_1);
-	RELEASE(cement->section);
-	RELEASE(cement);
+	//player->CleanUp();
+	//enemy_1->CleanUp();
+	////TODO: Scene Manager call clean of all their objects
+	//RELEASE(player);
+	//RELEASE(enemy_1);
+	//RELEASE(cement->section);
+	//RELEASE(cement);
 
 	RELEASE(scene);
 	RELEASE(App);

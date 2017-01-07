@@ -28,6 +28,18 @@ update_status ModuleSceneManager::PostUpdate()
 	return current_scene->PostUpdate();
 }
 
+bool ModuleSceneManager::CleanUp()
+{
+	LOG("Cleaning Scene objects");
+	for (list<GameObject*>::iterator it = current_scene->game_objects.begin(); it != current_scene->game_objects.end(); ++it) {
+		((GameObject*)*it)->CleanUp();
+		RELEASE(*it);
+	}
+		
+
+	return true;
+}
+
 void ModuleSceneManager::AddGameObjectToScene(GameObject* gameObject)
 {
 	current_scene->game_objects.push_back(gameObject);

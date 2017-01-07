@@ -31,3 +31,9 @@ void Cementery::Update()
 void Cementery::PostUpdate()
 {
 }
+
+bool Cementery::CleanUp()
+{
+	RELEASE(section);
+	return true;
+}

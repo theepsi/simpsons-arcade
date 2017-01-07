@@ -25,6 +25,8 @@ public:
 
 	virtual void PostUpdate() = 0;
 
+	virtual bool CleanUp() = 0;
+
 	bool IsEnabled()
 	{
 		return enabled;
