@@ -7,6 +7,7 @@
 #include <sstream>
 Enemy::Enemy()
 {
+	type = GameObjectType::ENEMY_ENTITY;
 }
 
 Enemy::~Enemy()

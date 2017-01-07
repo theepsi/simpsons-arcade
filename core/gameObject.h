@@ -3,6 +3,13 @@
 
 #include "point3D.h"
 
+enum GameObjectType {
+	PLAYER_ENTITY,
+	ENEMY_ENTITY,
+	SCENARY_ENTITY,
+	UNKNOWN_ENTITY
+};
+
 class GameObject {
 public:
 	GameObject() {}
@@ -24,6 +31,7 @@ public:
 	}
 
 	iPoint3D position;
+	GameObjectType type = GameObjectType::UNKNOWN_ENTITY;
 private:
 	//GameObject true by default
 	bool enabled = true;

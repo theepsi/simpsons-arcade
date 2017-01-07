@@ -1,7 +1,7 @@
 #ifndef __ModuleCollision_H__
 #define __ModuleCollision_H__
 
-#include<list>
+#include <list>
 #include "Module.h"
 
 // Example: lasers should not collide with lasers but should collider with walls
@@ -13,10 +13,10 @@ public:
 };
 
 enum CollisionAgainst {
-	PLAYER,
-	ENEMY,
-	WALL,
-	NONE
+	PLAYER_COLLISION,
+	ENEMY_COLLISION,
+	WALL_COLLISION,
+	UNKOWN_COLLISION
 };
 
 extern bool collisionMatrix[4][4];
@@ -25,7 +25,7 @@ struct Collider
 {
 	SDL_Rect rect = { 0,0,0,0 };
 	bool to_delete = false;
-	CollisionAgainst col_against = NONE;
+	CollisionAgainst col_against = UNKOWN_COLLISION;
 	// TODO 10: Add a way to notify other classes that a collision happened
 
 	Collider(SDL_Rect rectangle) : // expand this call if you need to

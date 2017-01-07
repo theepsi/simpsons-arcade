@@ -5,7 +5,7 @@
 
 Cementery::Cementery()
 {
-	
+	type = GameObjectType::SCENARY_ENTITY;
 }
 
 Cementery::~Cementery()

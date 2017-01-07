@@ -10,6 +10,7 @@
 
 Player::Player()
 {
+	type = GameObjectType::PLAYER_ENTITY;
 }
 
 Player::~Player()

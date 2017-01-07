@@ -14,8 +14,8 @@ public:
 	Character();
 	virtual ~Character();
 
-	float speed;
-	float jump_speed;
+	float speed = 1.f;
+	float jump_speed = 0.f;
 	bool Start() = 0;
 	void PreUpdate();
 	void Update();
