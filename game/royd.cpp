@@ -17,11 +17,12 @@ bool Royd::Start()
 	position.y = 0;
 	position.z = 102;
 
-	speed = 2.f;
+	speed = 1.f;
 
 	texture = App->textures->Load("resources/enemy_royd/royd_sprite.png");
 
 	Animation idle;
+	idle.name = "idle";
 	idle.frames.push_back({ 0, 0, 100, 100 });
 	idle.frames.push_back({ 100, 0, 100, 100 });
 	idle.speed = 0.09f;
@@ -29,6 +30,7 @@ bool Royd::Start()
 	AddAnimation("idle", idle);
 
 	Animation walking;
+	walking.name = "walking";
 	walking.frames.push_back({ 0, 100, 100, 100 });
 	walking.frames.push_back({ 100, 100, 100, 100 });
 	walking.frames.push_back({ 200, 100, 100, 100 });
@@ -42,6 +44,7 @@ bool Royd::Start()
 	AddAnimation("walking", walking);
 
 	Animation walking_up;
+	walking_up.name = "walking_up";
 	walking_up.frames.push_back({ 0, 200, 100, 100 });
 	walking_up.frames.push_back({ 100, 200, 100, 100 });
 	walking_up.frames.push_back({ 200, 200, 100, 100 });
@@ -55,6 +58,7 @@ bool Royd::Start()
 	AddAnimation("walking_up", walking_up);
 
 	Animation walking_down;
+	walking_down.name = "walking_down";
 	walking_down.frames.push_back({ 0, 300, 100, 100 });
 	walking_down.frames.push_back({ 100, 300, 100, 100 });
 	walking_down.frames.push_back({ 200, 300, 100, 100 });

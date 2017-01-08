@@ -162,6 +162,7 @@
     <ClCompile Include="player.cpp" />
     <ClCompile Include="royd.cpp" />
     <ClCompile Include="roydIdleState.cpp" />
+    <ClCompile Include="roydWalkingState.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="cementery.h" />
@@ -176,6 +177,7 @@
     <ClInclude Include="player.h" />
     <ClInclude Include="royd.h" />
     <ClInclude Include="roydIdleState.h" />
+    <ClInclude Include="roydWalkingState.h" />
     <ClInclude Include="state.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

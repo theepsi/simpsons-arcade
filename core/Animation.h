@@ -6,6 +6,7 @@ using namespace std;
 class Animation
 {
 public:
+	string name;
 	bool loop = true;
 	float speed = 1.0f;
 	vector<SDL_Rect> frames;

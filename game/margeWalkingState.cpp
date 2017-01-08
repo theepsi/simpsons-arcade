@@ -43,24 +43,31 @@ void MargeWalkingState::Update(Character& player)
 
 	if (App->input->GetKey(SDL_SCANCODE_W) == KEY_REPEAT)
 	{
-		player.position.z -= (int)player.speed;
+		if (App->input->GetKey(SDL_SCANCODE_S) == KEY_REPEAT)
+			player.ChangeState(new MargeIdleState, "idle");
+		else
+			player.position.z -= (int)player.speed;
+	}
+	else if (App->input->GetKey(SDL_SCANCODE_S) == KEY_REPEAT)
+	{
+		player.position.z += (int)player.speed;
 	}
 
-	if (App->input->GetKey(SDL_SCANCODE_A) == KEY_REPEAT)
+	if (App->input->GetKey(SDL_SCANCODE_D) == KEY_REPEAT)
+	{
+		if (App->input->GetKey(SDL_SCANCODE_A) == KEY_REPEAT)
+			player.ChangeState(new MargeIdleState, "idle");
+		else {
+			player.flipped = false;
+			player.position.x += (int)player.speed;
+		}
+	}
+	else if(App->input->GetKey(SDL_SCANCODE_A) == KEY_REPEAT)
 	{
 		player.flipped = true;
 		player.position.x -= (int)player.speed;
 	}
 
-	if (App->input->GetKey(SDL_SCANCODE_D) == KEY_REPEAT)
-	{
-		player.flipped = false;
-		player.position.x += (int)player.speed;
-	}
-
-	if (App->input->GetKey(SDL_SCANCODE_S) == KEY_REPEAT)
-	{
-		player.position.z += (int)player.speed;
-	}
+	
 	
 }

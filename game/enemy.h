@@ -16,10 +16,12 @@ public:
 	float jump_speed = 5.f;
 	bool Start() = 0;
 	void Update();
-	Player* objective;
+	Player* objective = nullptr;
+
+	Player* GetCloserPlayer();
 
 protected:
-	list<Player*> players_on_screen;
+	list<GameObject*> players_on_screen;
 
 };
 

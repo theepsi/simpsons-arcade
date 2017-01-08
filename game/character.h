@@ -42,6 +42,13 @@ public:
 		SetCurrentAnimation(anim);
 		state = next_state;
 	}
+	
+	bool CheckCurrentAnimation(const string& name) {
+		if (current_animation.name == name) {
+			return true;
+		}
+		return false;
+	}
 
 protected:
 	map<string, Animation> animations;
