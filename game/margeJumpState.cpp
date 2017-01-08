@@ -5,6 +5,7 @@
 #include "margeWalkingState.h"
 #include "margeAttack1State.h"
 #include "margeJumpState.h"
+#include "margeJumpAttackState.h"
 #include "ModuleInput.h"
 
 
@@ -41,22 +42,25 @@ void MargeJumpState::Update(Character& player)
 		player.position.z += (int)player.speed;
 	}
 
-	if (going_up) {
-		player.position.y -= (int)player.jump_speed;
-		if (player.position.y < -100) {
-			going_up = false;
-		}
+	if (App->input->GetKey(SDL_SCANCODE_K) == KEY_DOWN) {
+		static_cast<Marge*>(&player)->Attack(true);
 	}
 	else {
-		if (player.position.y >= 0) {
-			player.position.y = 0;
-			player.ChangeState(new MargeIdleState, "idle");
+		if (going_up) {
+			player.position.y -= (int)player.jump_speed;
+			if (player.position.y < -100) {
+				going_up = false;
+			}
 		}
 		else {
-			player.SetCurrentAnimation("fall");
-			player.position.y += 4;
-		}	
+			if (player.position.y >= 0) {
+				player.position.y = 0;
+				player.ChangeState(new MargeIdleState, "idle");
+			}
+			else {
+				player.SetCurrentAnimation("fall");
+				player.position.y += 4;
+			}
+		}
 	}
-	
-
 }

@@ -5,6 +5,7 @@
 #include "margeWalkingState.h"
 #include "margeAttack1State.h"
 #include "margeJumpState.h"
+#include "margeJumpAttackState.h"
 #include "ModuleInput.h"
 
 MargeIdleState::MargeIdleState()
@@ -33,7 +34,7 @@ void MargeIdleState::Update(Character& player)
 		}
 
 		if (App->input->GetKey(SDL_SCANCODE_K) == KEY_DOWN) {
-			static_cast<Marge*>(&player)->Attack();
+			static_cast<Marge*>(&player)->Attack(false);
 		}
 
 		if (App->input->GetKey(SDL_SCANCODE_J) == KEY_DOWN) {
