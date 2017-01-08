@@ -25,7 +25,7 @@ void Cementery::PreUpdate()
 void Cementery::Update()
 {
 	//TODO: Change this when player moves...
-	App->renderer->PriorityBlit(texture, 0, 0, section);
+	App->renderer->PriorityBlit(texture, 0, 0, -1, section);
 }
 
 void Cementery::PostUpdate()

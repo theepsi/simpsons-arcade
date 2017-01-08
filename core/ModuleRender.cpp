@@ -11,7 +11,7 @@ ModuleRender::ModuleRender()
 {
 	camera.x = camera.y = 0;
 	camera.w = SCREEN_WIDTH * SCREEN_SIZE;
-	camera.h = SCREEN_HEIGHT* SCREEN_SIZE;
+	camera.h = SCREEN_HEIGHT * SCREEN_SIZE;
 }
 
 // Destructor
@@ -52,7 +52,7 @@ update_status ModuleRender::PreUpdate()
 update_status ModuleRender::Update()
 {
 	// debug camera
-	int speed = 1;
+	int speed = 2;
 
 	if(App->input->GetKey(SDL_SCANCODE_UP) == KEY_REPEAT)
 		App->renderer->camera.y += speed;
@@ -153,7 +153,7 @@ bool ModuleRender::Blit(SDL_Texture* texture, int x, int y, SDL_Rect* section, f
 	return ret;
 }
 
-void ModuleRender::PriorityBlit(SDL_Texture * texture, int x, int y, SDL_Rect * section, float speed, bool flipped)
+void ModuleRender::PriorityBlit(SDL_Texture * texture, int x, int y, int priority, SDL_Rect * section, float speed, bool flipped)
 {
 	bool ret = true;
 	SDL_Rect* rect = new SDL_Rect;
@@ -179,7 +179,7 @@ void ModuleRender::PriorityBlit(SDL_Texture * texture, int x, int y, SDL_Rect * 
 	rgo->texture = texture;
 	rgo->section = section;
 	rgo->rect = rect;
-	rgo->priority = -1;
+	rgo->priority = priority;
 	rgo->flipped = flipped;
 
 	priority_queue_renderer.emplace(rgo);

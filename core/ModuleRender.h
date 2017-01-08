@@ -38,7 +38,7 @@ public:
 	bool CleanUp();
 
 	bool Blit(SDL_Texture* texture, int x, int y, SDL_Rect* section, float speed = 1.0f);
-	void PriorityBlit(SDL_Texture* texture, int x, int y, SDL_Rect* section, float speed = 1.0f, bool flipped=false);
+	void PriorityBlit(SDL_Texture* texture, int x, int y, int priority, SDL_Rect* section, float speed = 1.0f, bool flipped=false);
 	void PriorityBlit3D(SDL_Texture* texture, int x, int y, int z, SDL_Rect* section, float speed, bool flipped);
 	bool Blit3D(SDL_Texture* texture, int x, int y, int z, SDL_Rect* section, float speed = 1.0f);
 	bool MyBlit(SDL_Texture* texture, int x, int y, int z, SDL_Rect* section, float speed = 1.0f, bool flipped=false);
