@@ -23,6 +23,6 @@ void MargeJumpAttackState::Update(Character& player)
 			player.position.x -= 5;
 		else
 			player.position.x += 5;
-		player.position.y += 4;
+		player.position.y += 5;
 	}
 }
