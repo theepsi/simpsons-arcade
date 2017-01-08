@@ -19,8 +19,8 @@ int main(int argc, char ** argv)
 
 	App->scene_manager->current_scene = scene;
 	App->scene_manager->AddGameObjectToScene(cement);
-	App->scene_manager->AddGameObjectToScene(player);
 	App->scene_manager->AddGameObjectToScene(enemy_1);
+	App->scene_manager->AddGameObjectToScene(player);
 
 	int main_return = App->GameLoop();
 

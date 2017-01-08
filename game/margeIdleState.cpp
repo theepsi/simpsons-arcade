@@ -1,5 +1,6 @@
 #include "core.h"
-#include "player.h"
+#include "character.h"
+#include "marge.h"
 #include "margeIdleState.h"
 #include "margeWalkingState.h"
 #include "margeAttack1State.h"
@@ -32,7 +33,7 @@ void MargeIdleState::Update(Character& player)
 		}
 
 		if (App->input->GetKey(SDL_SCANCODE_K) == KEY_DOWN) {
-			player.ChangeState(new MargeAttack1State, "attack_1");
+			static_cast<Marge*>(&player)->Attack();
 		}
 
 		if (App->input->GetKey(SDL_SCANCODE_J) == KEY_DOWN) {

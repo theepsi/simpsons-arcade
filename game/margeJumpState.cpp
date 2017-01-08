@@ -1,5 +1,6 @@
 #include "core.h"
-#include "player.h"
+#include "character.h"
+#include "marge.h"
 #include "margeIdleState.h"
 #include "margeWalkingState.h"
 #include "margeAttack1State.h"
