@@ -47,6 +47,7 @@ public:
 public:
 	SDL_Renderer* renderer = nullptr;
 	SDL_Rect camera;
+	bool debug = false;
 
 private:
 	priority_queue<RenderGameObject*, std::vector<RenderGameObject*>, OrderByZ> priority_queue_renderer;
