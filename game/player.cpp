@@ -3,6 +3,8 @@
 #include "ModuleRender.h"
 #include "ModuleInput.h"
 #include "ModuleFonts.h"
+#include "ModuleSceneManager.h"
+#include "Scene.h"
 #include "state.h"
 
 #define CAMERA_SCREEN_OFFSET_X 180       //OFFSET for the camera, the scene will move right/down/up when player hits this offset.
@@ -24,6 +26,8 @@ Player::~Player()
 
 void Player::Update() {
 
+	ApplySceneLimits();
+
 	SDL_Rect* current_frame = &current_animation.GetCurrentFrame();
 
 	App->renderer->PriorityBlit3D(texture, position.x, position.y, position.z, current_frame, 1.f, flipped);
@@ -32,6 +36,7 @@ void Player::Update() {
 
 	if (App->input->GetKey(SDL_SCANCODE_F2) == KEY_DOWN)
 		debug = !debug;
+	
 
 	if (!debug) {
 		if (position.x > (abs(App->renderer->camera.x) / SCREEN_SIZE + App->renderer->camera.w / SCREEN_SIZE) - CAMERA_SCREEN_OFFSET_X) {
@@ -60,4 +65,18 @@ void Player::Update() {
 	
 	RELEASE(font);
 
+}
+
+void Player::ApplySceneLimits()
+{
+	Scene* scene = App->scene_manager->current_scene;
+	//Apply camera position.x to camera, so the player can not go back.
+	if (position.x < scene->x_min + abs(App->renderer->camera.x) / SCREEN_SIZE)
+		position.x = scene->x_min + abs(App->renderer->camera.x) / SCREEN_SIZE;
+	else if (position.x > scene->x_max)
+		position.x = scene->x_max;
+	if (position.z < scene->z_min)
+		position.z = scene->z_min;
+	else if (position.z > scene->z_max)
+		position.z = scene->z_max;
 }

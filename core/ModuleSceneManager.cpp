@@ -44,7 +44,7 @@ void ModuleSceneManager::AddGameObjectToScene(GameObject* gameObject)
 {
 	current_scene->game_objects.push_back(gameObject);
 	if (gameObject->type == GameObjectType::PLAYER_ENTITY) {
-		players_available.push_back(gameObject);
+		current_scene->players_available.push_back(gameObject);
 	}
 }
 
@@ -55,11 +55,20 @@ list<GameObject*> ModuleSceneManager::GetGameObjects()
 
 list<GameObject*> ModuleSceneManager::GetPlayersAvailable()
 {
-	return players_available;
+	return current_scene->players_available;
 }
 
 void ModuleSceneManager::RemovePlayerOnScreen(GameObject* gameObject)
 {
-	players_available.remove(gameObject);
+	current_scene->players_available.remove(gameObject);
 }
+
+void ModuleSceneManager::AddSceneLimitations(const int& x_max, const int& x_min, const int& z_max, const int& z_min)
+{
+	current_scene->x_max = x_max;
+	current_scene->x_min = x_min;
+	current_scene->z_max = z_max;
+	current_scene->z_min = z_min;
+}
+
 

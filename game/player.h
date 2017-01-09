@@ -9,6 +9,7 @@ public:
 	virtual ~Player();
 	bool Start() = 0;
 	void Update();
+	void ApplySceneLimits();
 private:
 	bool debug = false;
 };

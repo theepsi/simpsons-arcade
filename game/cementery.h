@@ -21,6 +21,7 @@ public:
 	SDL_Texture* texture;
 	Animation animations;
 	SDL_Rect* section = new SDL_Rect({ 4, 262, 2304, 256 });
+
 };
 
 #endif

@@ -21,6 +21,7 @@ int main(int argc, char ** argv)
 	App->scene_manager->AddGameObjectToScene(cement);
 	App->scene_manager->AddGameObjectToScene(enemy_1);
 	App->scene_manager->AddGameObjectToScene(player);
+	App->scene_manager->AddSceneLimitations(2200, -20, 165, 88);
 
 	int main_return = App->GameLoop();
 

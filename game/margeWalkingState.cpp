@@ -44,7 +44,6 @@ void MargeWalkingState::Update(Character& player)
 		player.SetCurrentAnimation("walking");
 	}
 
-	//TODO: Add player limitations for specific scenario (Colliders)
 	if (App->input->GetKey(SDL_SCANCODE_W) == KEY_REPEAT)
 	{
 		if (App->input->GetKey(SDL_SCANCODE_S) == KEY_REPEAT)

@@ -48,7 +48,12 @@ public:
 	}
 
 	list<GameObject*> game_objects;
-	
+	list<GameObject*> players_available;
+
+	int x_max;
+	int x_min;
+	int z_max;
+	int z_min;
 };
 
 #endif

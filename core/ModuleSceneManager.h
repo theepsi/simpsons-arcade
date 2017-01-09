@@ -31,7 +31,7 @@ public:
 	list<GameObject*> GetPlayersAvailable();
 	void RemovePlayerOnScreen(GameObject* gameObject);
 
-	list<GameObject*> players_available;
+	void AddSceneLimitations(const int& x_max, const int& x_min, const int& z_max, const int& z_min);
 };
 
 
