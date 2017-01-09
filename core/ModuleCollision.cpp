@@ -75,8 +75,13 @@ Collider * ModuleCollision::AddCollider(const SDL_Rect& rect, int z, GameObject*
 
 void ModuleCollision::DebugDraw()
 {
-	for (list<Collider*>::iterator it = colliders.begin(); it != colliders.end(); ++it)
-		App->renderer->DrawQuad3D((*it)->rect, (*it)->position_z, 255, 0, 0, 80);
+	for (list<Collider*>::iterator it = colliders.begin(); it != colliders.end(); ++it) {
+		if ((*it)->col_against == CollisionAgainst::PLAYER_COLLISION || (*it)->col_against == CollisionAgainst::ENEMY_COLLISION)
+			App->renderer->DrawQuad3D((*it)->rect, (*it)->position_z, 0, 255, 0, 80);
+		if ((*it)->col_against == CollisionAgainst::PLAYER_ATTACK_COLISION || (*it)->col_against == CollisionAgainst::ENEMY_ATTACK_COLISION)
+			App->renderer->DrawQuad3D((*it)->rect, (*it)->position_z, 255, 0, 0, 80);
+	}
+		
 }
 
 // Called before quitting

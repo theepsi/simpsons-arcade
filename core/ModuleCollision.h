@@ -28,7 +28,7 @@ struct Collider
 	CollisionAgainst col_against = UNKOWN_COLLISION;
 	GameObject* referenced_object;
 
-	Collider(SDL_Rect rectangle, int z, GameObject* game_object, CollisionAgainst col_against) : // expand this call if you need to
+	Collider(SDL_Rect rectangle, int z, GameObject* game_object, CollisionAgainst col_against) :
 		rect(rectangle), position_z(z), referenced_object(game_object), col_against(col_against)
 	{}
 
