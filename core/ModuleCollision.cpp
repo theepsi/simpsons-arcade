@@ -46,7 +46,7 @@ update_status ModuleCollision::Update()
 		for (list<Collider*>::iterator it2 = ++it; it2 != colliders.end(); ++it2)
 		{
 			Collider* col2 = (*it2);
-			if (collisionMatrix[col->col_against][col2->col_against] && col->CheckCollision(col2->rect)) {
+			if (collisionMatrix[col->col_against][col2->col_against] && col->CheckCollision(col2->rect, col2->position_z)) {
 				//TODO: Notification stuff
 				col->referenced_object->OnEnterCollision(*col, *col2);
 				col2->referenced_object->OnEnterCollision(*col2, *col);
@@ -63,7 +63,7 @@ update_status ModuleCollision::Update()
 	return UPDATE_CONTINUE;
 }
 
-Collider * ModuleCollision::AddCollider(const SDL_Rect & rect, const int & z, GameObject * game_object, CollisionAgainst col_against)
+Collider * ModuleCollision::AddCollider(const SDL_Rect& rect, int z, GameObject* game_object, CollisionAgainst col_against)
 {
 	Collider* ret = new Collider(rect, z, game_object, col_against);
 
@@ -94,8 +94,8 @@ bool ModuleCollision::CleanUp()
 
 // -----------------------------------------------------
 
-bool Collider::CheckCollision(const SDL_Rect& r) const
+bool Collider::CheckCollision(const SDL_Rect& r, int z) const
 {
 	// Return true if the argument and the own rectangle are intersecting
-	return !((rect.x+rect.w) > r.x || (r.x + r.w) > rect.x || (r.x + r.h) > rect.x || (rect.x + rect.h) > r.x);
+	return (abs(position_z) - abs(z) <= 3) && !((rect.x+rect.w) < r.x || (r.x + r.w) < rect.x || (r.y + r.h) < rect.y || (rect.y + rect.h) < r.y);
 }

@@ -9,7 +9,9 @@
 
 enum CollisionAgainst {
 	PLAYER_COLLISION,
+	PLAYER_ATTACK_COLISION,
 	ENEMY_COLLISION,
+	ENEMY_ATTACK_COLISION,
 	WALL_COLLISION,
 	UNKOWN_COLLISION
 };
@@ -36,7 +38,7 @@ struct Collider
 		rect.y = y;
 	}
 
-	bool CheckCollision(const SDL_Rect& r) const;
+	bool CheckCollision(const SDL_Rect& r, int z) const;
 };
 
 class ModuleCollision : public Module
@@ -51,7 +53,7 @@ public:
 
 	bool CleanUp();
 
-	Collider* AddCollider(const SDL_Rect& rect, const int& z, GameObject* game_object, CollisionAgainst col_against);
+	Collider* AddCollider(const SDL_Rect& rect, int z, GameObject* game_object, CollisionAgainst col_against);
 	void DebugDraw();
 
 private:
