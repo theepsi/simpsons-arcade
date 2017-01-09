@@ -8,6 +8,7 @@
 
 struct SDL_Texture;
 class State;
+struct Collider;
 
 class Character : public GameObject {
 public:
@@ -22,6 +23,8 @@ public:
 	void PostUpdate();
 	bool CleanUp();
 	bool flipped = false;
+
+	int x_offset, y_offset;
 
 	Animation* GetCurrentAnimation() {
 		return &current_animation;
@@ -50,11 +53,20 @@ public:
 		return false;
 	}
 
+	void UpdateColliderPosition() {
+		if (collider != nullptr) {
+			collider->position_z = position.z;
+			collider->rect.x = position.x + x_offset;
+			collider->rect.y = position.y + y_offset;
+		}		
+	}
+
 protected:
 	map<string, Animation> animations;
 	Animation current_animation;
 	State* state = nullptr;
 	SDL_Texture* texture;
+	Collider* collider = nullptr;
 };
 
 #endif

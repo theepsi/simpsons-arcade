@@ -43,6 +43,7 @@ public:
 	bool Blit3D(SDL_Texture* texture, int x, int y, int z, SDL_Rect* section, float speed = 1.0f);
 	bool MyBlit(SDL_Texture* texture, int x, int y, int z, SDL_Rect* section, float speed = 1.0f, bool flipped=false);
 	bool DrawQuad(const SDL_Rect& rect, Uint8 r, Uint8 g, Uint8 b, Uint8 a, bool use_camera = true);
+	bool DrawQuad3D(const SDL_Rect& rect, int z, Uint8 r, Uint8 g, Uint8 b, Uint8 a, bool use_camera = true);
 
 public:
 	SDL_Renderer* renderer = nullptr;

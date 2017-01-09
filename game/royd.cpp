@@ -73,7 +73,10 @@ bool Royd::Start()
 	
 
 	//TODO: ADD MORE ANIMATIONS
-	//TODO: State machine for enemy?
+	SDL_Rect coll_rect = { 0, 0, 30, 60 };
+	x_offset = 35;
+	y_offset = 40;
+	collider = App->collision->AddCollider(coll_rect, position.z, this, CollisionAgainst::ENEMY_COLLISION);
 	SetCurrentAnimation("idle");
 
 	ChangeState(new RoydIdleState, "idle");

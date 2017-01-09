@@ -4,6 +4,7 @@
 #include "ModuleInput.h"
 #include "ModuleFonts.h"
 #include "ModuleSceneManager.h"
+#include "ModuleCollision.h"
 #include "Scene.h"
 #include "state.h"
 
@@ -79,4 +80,10 @@ void Player::ApplySceneLimits()
 		position.z = scene->z_min;
 	else if (position.z > scene->z_max)
 		position.z = scene->z_max;
+}
+
+bool Player::OnEnterCollision(Collider& source, Collider& affected)
+{
+	LOG("PLAYER: COLISSION AGAINST something");
+	return true;
 }

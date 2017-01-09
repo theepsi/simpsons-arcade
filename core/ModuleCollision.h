@@ -7,11 +7,6 @@
 // Example: lasers should not collide with lasers but should collider with walls
 // enemy shots will collide with other enemies ? and against walls ?
 
-class Notify {
-public:
-	Notify();
-};
-
 enum CollisionAgainst {
 	PLAYER_COLLISION,
 	ENEMY_COLLISION,
@@ -19,17 +14,20 @@ enum CollisionAgainst {
 	UNKOWN_COLLISION
 };
 
+class GameObject;
+
 extern bool collisionMatrix[4][4];
 
 struct Collider
 {
 	SDL_Rect rect = { 0,0,0,0 };
+	int position_z;
 	bool to_delete = false;
 	CollisionAgainst col_against = UNKOWN_COLLISION;
-	// TODO 10: Add a way to notify other classes that a collision happened
+	GameObject* referenced_object;
 
-	Collider(SDL_Rect rectangle) : // expand this call if you need to
-		rect(rectangle)
+	Collider(SDL_Rect rectangle, int z, GameObject* game_object, CollisionAgainst col_against) : // expand this call if you need to
+		rect(rectangle), position_z(z), referenced_object(game_object), col_against(col_against)
 	{}
 
 	void SetPos(int x, int y)
@@ -53,7 +51,7 @@ public:
 
 	bool CleanUp();
 
-	Collider* AddCollider(const SDL_Rect& rect);
+	Collider* AddCollider(const SDL_Rect& rect, const int& z, GameObject* game_object, CollisionAgainst col_against);
 	void DebugDraw();
 
 private:

@@ -1,6 +1,7 @@
 #ifndef _GAME_OBJECT
 #define _GAME_OBJECT
 
+#include "ModuleCollision.h"
 #include "point3D.h"
 
 enum GameObjectType {
@@ -26,6 +27,8 @@ public:
 	virtual void PostUpdate() = 0;
 
 	virtual bool CleanUp() = 0;
+
+	virtual bool OnEnterCollision(Collider& source, Collider& affected) = 0;
 
 	bool IsEnabled()
 	{

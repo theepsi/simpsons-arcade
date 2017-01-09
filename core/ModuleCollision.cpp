@@ -40,8 +40,7 @@ update_status ModuleCollision::PreUpdate()
 
 update_status ModuleCollision::Update()
 {
-	// After making it work, review that you are doing the minumum checks possible
-	for (list<Collider*>::iterator it = colliders.begin(); it != colliders.end(); ++it)
+	for (list<Collider*>::iterator it = colliders.begin(); it != colliders.end();)
 	{
 		Collider* col = (*it);
 		for (list<Collider*>::iterator it2 = ++it; it2 != colliders.end(); ++it2)
@@ -49,6 +48,8 @@ update_status ModuleCollision::Update()
 			Collider* col2 = (*it2);
 			if (collisionMatrix[col->col_against][col2->col_against] && col->CheckCollision(col2->rect)) {
 				//TODO: Notification stuff
+				col->referenced_object->OnEnterCollision(*col, *col2);
+				col2->referenced_object->OnEnterCollision(*col2, *col);
 			}
 		}
 	}
@@ -62,10 +63,19 @@ update_status ModuleCollision::Update()
 	return UPDATE_CONTINUE;
 }
 
+Collider * ModuleCollision::AddCollider(const SDL_Rect & rect, const int & z, GameObject * game_object, CollisionAgainst col_against)
+{
+	Collider* ret = new Collider(rect, z, game_object, col_against);
+
+	colliders.push_back(ret);
+
+	return ret;
+}
+
 void ModuleCollision::DebugDraw()
 {
 	for (list<Collider*>::iterator it = colliders.begin(); it != colliders.end(); ++it)
-		App->renderer->DrawQuad((*it)->rect, 255, 0, 0, 80);
+		App->renderer->DrawQuad3D((*it)->rect, (*it)->position_z, 255, 0, 0, 80);
 }
 
 // Called before quitting
@@ -81,14 +91,6 @@ bool ModuleCollision::CleanUp()
 	return true;
 }
 
-Collider* ModuleCollision::AddCollider(const SDL_Rect& rect)
-{
-	Collider* ret = new Collider(rect);
-
-	colliders.push_back(ret);
-
-	return ret;
-}
 
 // -----------------------------------------------------
 

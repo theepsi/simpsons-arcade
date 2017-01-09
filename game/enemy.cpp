@@ -27,10 +27,17 @@ void Enemy::Update()
 	state->Update(*this);
 }
 
+bool Enemy::OnEnterCollision(Collider& source, Collider& affected)
+{
+	LOG("ENEMY: COLISSION AGAINST something");
+	return true;
+}
+
+
 Player * Enemy::GetCloserPlayer()
 {
 	for (list<GameObject*>::iterator it = players_on_screen.begin(); it != players_on_screen.end(); ++it) {
-		//TODO: calculate minor distance to player, pitagoras
+		//TODO: calculate minor distance to player (when more than one player), pitagoras
 	}
 	//TODO: this return if for testing
 	return (Player*)players_on_screen.front();

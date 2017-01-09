@@ -30,7 +30,7 @@ void Character::Update() {
 }
 
 void Character::PostUpdate() {
-
+	UpdateColliderPosition();
 }
 
 bool Character::CleanUp()
