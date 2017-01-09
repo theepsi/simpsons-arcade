@@ -9,6 +9,8 @@ public:
 	virtual ~Player();
 	bool Start() = 0;
 	void Update();
+private:
+	bool debug = false;
 };
 
 #endif

@@ -44,6 +44,7 @@ void MargeWalkingState::Update(Character& player)
 		player.SetCurrentAnimation("walking");
 	}
 
+	//TODO: Add player limitations for specific scenario (Colliders)
 	if (App->input->GetKey(SDL_SCANCODE_W) == KEY_REPEAT)
 	{
 		if (App->input->GetKey(SDL_SCANCODE_S) == KEY_REPEAT)
@@ -55,7 +56,7 @@ void MargeWalkingState::Update(Character& player)
 	{
 		player.position.z += (int)player.speed;
 	}
-
+	
 	if (App->input->GetKey(SDL_SCANCODE_D) == KEY_REPEAT)
 	{
 		if (App->input->GetKey(SDL_SCANCODE_A) == KEY_REPEAT)
@@ -65,12 +66,9 @@ void MargeWalkingState::Update(Character& player)
 			player.position.x += (int)player.speed;
 		}
 	}
-	else if(App->input->GetKey(SDL_SCANCODE_A) == KEY_REPEAT)
+	else if (App->input->GetKey(SDL_SCANCODE_A) == KEY_REPEAT)
 	{
 		player.flipped = true;
 		player.position.x -= (int)player.speed;
 	}
-
-	
-	
 }
