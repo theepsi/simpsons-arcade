@@ -6,11 +6,12 @@
 
 using namespace std;
 
-bool collisionMatrix[4][4] = {
-	{false, true, true, false},
-	{true, false, true, false},
-	{true, true, true, false},
-	{false, false, false, false}
+bool collisionMatrix[6][6] = {
+	{false, false, true, true, true, false},
+	{false, false, true, false, false, false},
+	{true, true, false, false, false, false},
+	{true, false, false, false, false, false},
+	{false, false, false, false, false, false}
 };
 
 ModuleCollision::ModuleCollision()

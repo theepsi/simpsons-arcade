@@ -18,7 +18,7 @@ enum CollisionAgainst {
 
 class GameObject;
 
-extern bool collisionMatrix[4][4];
+extern bool collisionMatrix[6][6];
 
 struct Collider
 {
