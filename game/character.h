@@ -61,12 +61,14 @@ public:
 		}		
 	}
 
+	Collider* collider = nullptr;
+	Collider* collider_attack = nullptr;
+
 protected:
 	map<string, Animation> animations;
 	Animation current_animation;
 	State* state = nullptr;
 	SDL_Texture* texture;
-	Collider* collider = nullptr;
 };
 
 #endif

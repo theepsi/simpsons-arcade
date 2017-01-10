@@ -8,22 +8,42 @@
 
 MargeAttack1State::MargeAttack1State()
 {
+	//LOG("new attack");
 }
 
 MargeAttack1State::~MargeAttack1State()
 {
+	//LOG("exit attack");
 }
 
 void MargeAttack1State::Update(Character& player)
 {
+	if (player.collider_attack == nullptr) {
+		SDL_Rect coll_rect = { 0,0,0,0 };
+		if (player.flipped)
+			coll_rect = { player.position.x + player.x_offset - 30, player.position.y + player.y_offset, 30, 30 };
+		else
+			coll_rect = { player.position.x + player.x_offset + 30, player.position.y + player.y_offset, 30, 30 };
+		player.collider_attack = App->collision->AddCollider(coll_rect, player.position.z, &player, CollisionAgainst::PLAYER_ATTACK_COLISION);
+	}
+	
 	if (App->input->GetKey(SDL_SCANCODE_A) == KEY_DOWN ||
 		App->input->GetKey(SDL_SCANCODE_D) == KEY_DOWN ||
 		App->input->GetKey(SDL_SCANCODE_S) == KEY_DOWN) {
 
+		if (player.collider_attack != nullptr) {
+			player.collider_attack->to_delete = true;
+			player.collider_attack = nullptr;
+		}
 		player.ChangeState(new MargeWalkingState, "walking");
 
 	}
 	if (App->input->GetKey(SDL_SCANCODE_W) == KEY_DOWN) {
+
+		if (player.collider_attack != nullptr) {
+			player.collider_attack->to_delete = true;
+			player.collider_attack = nullptr;
+		}
 		player.ChangeState(new MargeWalkingState, "walking_up");
 	}
 	
@@ -32,7 +52,10 @@ void MargeAttack1State::Update(Character& player)
 	float last_frame = (float)anim->frames.size();
 	if (anim->Finished())
 	{
-
+		if (player.collider_attack != nullptr) {
+			player.collider_attack->to_delete = true;
+			player.collider_attack = nullptr;
+		}
 		if (App->input->GetKey(SDL_SCANCODE_A) == KEY_REPEAT ||
 			App->input->GetKey(SDL_SCANCODE_D) == KEY_REPEAT ||
 			App->input->GetKey(SDL_SCANCODE_S) == KEY_REPEAT) {
