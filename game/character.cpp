@@ -15,6 +15,12 @@ Character::~Character() {
 
 }
 
+bool Character::Start()
+{
+	font = App->fonts->Load("resources/fonts/simpsons-font.png", "abcdefghijklmnopqrstuvwxyz0123456789.,'''?!@_#$%&()+-/:", 1);
+	return true;
+}
+
 void Character::PreUpdate() {
 
 }
@@ -35,6 +41,7 @@ void Character::PostUpdate() {
 
 bool Character::CleanUp()
 {
+	RELEASE(font);
 	RELEASE(state);
 	return true;
 }

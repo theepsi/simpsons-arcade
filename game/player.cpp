@@ -57,15 +57,10 @@ void Player::Update() {
 	state->Update(*this);
 
 	//TODO: TEXT TEST
-	ModuleFonts::Font* font = App->fonts->Load("resources/fonts/simpsons-font.png", "abcdefghijklmnopqrstuvwxyz0123456789.,'''?!@_#$%&()+-/:", 1);
-
 	ostringstream oss;
 	oss << "x: " << position.x << " y: " << position.y << " z: " << position.z;
 	string coords = oss.str();
 	App->fonts->Blit(0 - App->renderer->camera.x / SCREEN_SIZE, 0 - App->renderer->camera.y / SCREEN_SIZE, font, coords);
-	
-	RELEASE(font);
-
 }
 
 void Player::ApplySceneLimits()

@@ -5,6 +5,9 @@
 #include "Animation.h"
 #include "state.h"
 #include <map>
+#include "ModuleFonts.h"
+
+class ModuleFonts;
 
 struct SDL_Texture;
 class State;
@@ -17,7 +20,7 @@ public:
 
 	float speed = 1.f;
 	float jump_speed = 0.f;
-	bool Start() = 0;
+	bool Start();
 	void PreUpdate();
 	void Update();
 	void PostUpdate();
@@ -63,6 +66,7 @@ public:
 
 	Collider* collider = nullptr;
 	Collider* collider_attack = nullptr;
+	ModuleFonts::Font* font = nullptr;
 
 protected:
 	map<string, Animation> animations;

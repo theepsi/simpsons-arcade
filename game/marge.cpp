@@ -12,7 +12,7 @@ Marge::~Marge() {
 }
 
 bool Marge::Start() {
-
+	Player::Start();
 	position.x = 0;
 	position.y = 0;
 	position.z = 100;
