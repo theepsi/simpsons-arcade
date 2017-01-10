@@ -29,7 +29,10 @@ void Enemy::Update()
 
 bool Enemy::OnEnterCollision(Collider& source, Collider& affected)
 {
-	LOG("ENEMY: COLISSION AGAINST something");
+	if (affected.col_against == CollisionAgainst::PLAYER_ATTACK_COLISION) {
+		LOG("HITTED BY PLAYER");
+		//TODO: DO DAMAGE HERE;
+	}
 	return true;
 }
 
