@@ -11,8 +11,8 @@ public:
 	void Update();
 	void ApplySceneLimits();
 	bool OnEnterCollision(Collider& source, Collider& affected);
-	int continues = 0; //debug resu
-	bool respawning = false;
+	int continues;
+	int respawning;
 	void AttachUI(UI* ui) {
 		this->ui = ui;
 	};

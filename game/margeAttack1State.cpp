@@ -8,12 +8,12 @@
 
 MargeAttack1State::MargeAttack1State()
 {
-	//LOG("new attack");
+
 }
 
 MargeAttack1State::~MargeAttack1State()
 {
-	//LOG("exit attack");
+
 }
 
 void MargeAttack1State::Update(Character& player)

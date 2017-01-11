@@ -14,6 +14,8 @@
 
 #define CAMERA_LIMIT_DOWN 8
 
+#define X_END_DEMO 1740
+
 #include <sstream>
 
 
@@ -21,6 +23,8 @@ Player::Player()
 {
 	type = GameObjectType::PLAYER_ENTITY;
 	life = 4;
+	continues = 0;
+	respawning = 0;
 }
 
 Player::~Player()
@@ -29,13 +33,32 @@ Player::~Player()
 
 void Player::Update() {
 
+	if (position.x >= X_END_DEMO) {
+		App->fonts->Blit((0 - App->renderer->camera.x / SCREEN_SIZE), (0 - App->renderer->camera.y + App->renderer->camera.h / 2) / SCREEN_SIZE, font, "you beat the demo");
+		App->fonts->Blit((0 - App->renderer->camera.x / SCREEN_SIZE), (0 - App->renderer->camera.y + App->renderer->camera.h / 2) / SCREEN_SIZE + 20, font, "press esc to exit the game");
+	}
+	if (life == 0 && continues == 0) {
+		App->fonts->Blit((0 - App->renderer->camera.x / SCREEN_SIZE), (0 - App->renderer->camera.y + App->renderer->camera.h / 2) / SCREEN_SIZE, font, "you died");
+		App->fonts->Blit((0 - App->renderer->camera.x / SCREEN_SIZE), (0 - App->renderer->camera.y + App->renderer->camera.h / 2) / SCREEN_SIZE + 20, font, "press esc to exit the game");
+	}
 	ui->ApplyDamageToUI(life);
 	ui->GetContinues(continues);
 	ApplySceneLimits();
 
 	SDL_Rect* current_frame = &current_animation.GetCurrentFrame();
 
-	App->renderer->PriorityBlit3D(texture, position.x, position.y, position.z, current_frame, 1.f, flipped);
+	if (respawning <= 0)
+		respawning = 0;
+	if (respawning != 0) {
+		respawning -= 1;
+		if (respawning % 2 == 0) {
+			App->renderer->PriorityBlit3D(texture, position.x, position.y, position.z, current_frame, 1.f, flipped);
+		}
+	}
+	else {
+		App->renderer->PriorityBlit3D(texture, position.x, position.y, position.z, current_frame, 1.f, flipped);
+	}
+
 
 	//TODO: Allow Camera to move if no enemies.
 
@@ -68,13 +91,12 @@ void Player::Update() {
 		ostringstream oss;
 		oss << "x: " << position.x << " y: " << position.y << " z: " << position.z;
 		string coords = oss.str();
-		App->fonts->Blit(0 - App->renderer->camera.x / SCREEN_SIZE, (0 - App->renderer->camera.y + App->renderer->camera.h - 35)/ SCREEN_SIZE, font, coords);
+		App->fonts->Blit(0 - App->renderer->camera.x / SCREEN_SIZE, (0 - App->renderer->camera.y + App->renderer->camera.h - 35) / SCREEN_SIZE, font, coords);
 	}
 	if (god_mode) {
 		//GOD MODE ON
-		App->fonts->Blit((0 - App->renderer->camera.x + App->renderer->camera.w - 300)/ SCREEN_SIZE, (0 - App->renderer->camera.y + App->renderer->camera.h - 35) / SCREEN_SIZE, font, "god mode: on");
+		App->fonts->Blit((0 - App->renderer->camera.x + App->renderer->camera.w - 300) / SCREEN_SIZE, (0 - App->renderer->camera.y + App->renderer->camera.h - 35) / SCREEN_SIZE, font, "god mode: on");
 	}
-	
 }
 
 void Player::ApplySceneLimits()
@@ -97,8 +119,7 @@ void Player::ApplySceneLimits()
 bool Player::OnEnterCollision(Collider& source, Collider& affected)
 {
 	if (affected.col_against == CollisionAgainst::ENEMY_ATTACK_COLISION) {
-		//TODO:calculate damage;
-		if(!respawning && !god_mode)
+		if(respawning==0 && !god_mode)
 			RecieveDamage(1);
 	}
 	return true;

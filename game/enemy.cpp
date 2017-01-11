@@ -29,7 +29,6 @@ void Enemy::Update()
 bool Enemy::OnEnterCollision(Collider& source, Collider& affected)
 {
 	if (affected.col_against == CollisionAgainst::PLAYER_ATTACK_COLISION) {
-		//TODO: calculate damage
 		RecieveDamage(1);
 	}
 	if (affected.col_against == CollisionAgainst::PLAYER_COLLISION) {

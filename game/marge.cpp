@@ -27,6 +27,7 @@ bool Marge::Start() {
 	texture = App->textures->Load("resources/marge/marge_sprite.png");
 
 	Animation idle;
+	idle.name = "idle";
 	idle.frames.push_back({ 0, 0, 100, 100 });
 	idle.frames.push_back({ 0, 0, 100, 100 });
 	idle.frames.push_back({ 0, 0, 100, 100 });
@@ -56,6 +57,7 @@ bool Marge::Start() {
 	AddAnimation("idle", idle);
 	
 	Animation walking;
+	walking.name = "walking";
 	walking.frames.push_back({ 0, 100, 100, 100 });
 	walking.frames.push_back({ 100, 100, 100, 100 });
 	walking.frames.push_back({ 200, 100, 100, 100 });
@@ -69,6 +71,7 @@ bool Marge::Start() {
 	AddAnimation("walking", walking);
 
 	Animation walking_up;
+	walking_up.name = "walking_up";
 	walking_up.frames.push_back({ 0, 200, 100, 100 });
 	walking_up.frames.push_back({ 100, 200, 100, 100 });
 	walking_up.frames.push_back({ 200, 200, 100, 100 });
@@ -82,6 +85,7 @@ bool Marge::Start() {
 	AddAnimation("walking_up", walking_up);
 
 	Animation attack_1;
+	attack_1.name = "attack_1";
 	attack_1.frames.push_back({ 0, 300, 100, 100 });
 	attack_1.frames.push_back({ 100, 300, 100, 100 });
 	attack_1.frames.push_back({ 200, 300, 100, 100 });
@@ -91,6 +95,7 @@ bool Marge::Start() {
 	AddAnimation("attack_1", attack_1);
 
 	Animation attack_2;
+	attack_2.name = "attack_2";
 	attack_2.frames.push_back({ 0, 400, 100, 100 });
 	attack_2.frames.push_back({ 100, 400, 100, 100 });
 	attack_2.frames.push_back({ 200, 400, 100, 100 });
@@ -101,6 +106,7 @@ bool Marge::Start() {
 	AddAnimation("attack_2", attack_2);
 
 	Animation jump;
+	jump.name = "jump";
 	jump.frames.push_back({ 0, 500, 100, 100 });
 	jump.frames.push_back({ 100, 500, 100, 100 });
 	jump.speed = 0.17f;
@@ -109,6 +115,7 @@ bool Marge::Start() {
 	AddAnimation("jump", jump);
 
 	Animation fall;
+	fall.name = "fall";
 	fall.frames.push_back({ 0, 600, 100, 100 });
 	fall.speed = 0.17f;
 	fall.loop = false;
@@ -116,6 +123,7 @@ bool Marge::Start() {
 	AddAnimation("fall", fall);
 
 	Animation jump_attack_1;
+	jump_attack_1.name = "jump_attack_1";
 	jump_attack_1.frames.push_back({ 0, 700, 100, 100 });
 	jump_attack_1.frames.push_back({ 100, 700, 100, 100 });
 	jump_attack_1.frames.push_back({ 200, 700, 100, 100 });
@@ -127,6 +135,7 @@ bool Marge::Start() {
 	AddAnimation("jump_attack_1", jump_attack_1);
 
 	Animation jump_attack_2;
+	jump_attack_2.name = "jump_attack_2";
 	jump_attack_2.frames.push_back({ 0, 800, 100, 100 });
 	jump_attack_2.frames.push_back({ 100, 800, 100, 100 });
 	jump_attack_2.speed = 0.17f;
@@ -135,6 +144,7 @@ bool Marge::Start() {
 	AddAnimation("jump_attack_2", jump_attack_2);
 
 	Animation victory;
+	victory.name = "victory";
 	victory.frames.push_back({ 0, 900, 100, 100 });
 	victory.frames.push_back({ 100, 900, 100, 100 });
 	victory.speed = 0.17f;
@@ -143,6 +153,7 @@ bool Marge::Start() {
 	AddAnimation("victory", victory);
 
 	Animation dizzy;
+	dizzy.name = "dizzy";
 	dizzy.frames.push_back({ 0, 1000, 100, 100 });
 	dizzy.frames.push_back({ 0, 1000, 0, 100 });
 	dizzy.frames.push_back({ 100, 1000, 100, 100 });
@@ -156,6 +167,7 @@ bool Marge::Start() {
 	AddAnimation("dizzy", dizzy);
 
 	Animation resu_arrive;
+	resu_arrive.name = "resu_arrive";
 	resu_arrive.frames.push_back({ 0, 1100, 100, 100 });
 	resu_arrive.frames.push_back({ 100, 1100, 100, 100 });
 	resu_arrive.speed = 0.17f;
@@ -164,6 +176,7 @@ bool Marge::Start() {
 	AddAnimation("resu_arrive", resu_arrive);
 
 	Animation resu_fall;
+	resu_fall.name = "resu_fall";
 	resu_fall.frames.push_back({ 200, 1100, 100, 100 });
 	resu_fall.frames.push_back({ 300, 1100, 100, 100 });
 	resu_fall.speed = 0.17f;
@@ -172,6 +185,7 @@ bool Marge::Start() {
 	AddAnimation("resu_fall", resu_fall);
 
 	Animation jump_attack_3;
+	jump_attack_3.name = "jump_attack_3";
 	jump_attack_3.frames.push_back({ 0, 1200, 100, 100 });
 	jump_attack_3.frames.push_back({ 100, 1200, 100, 100 });
 	jump_attack_3.frames.push_back({ 200, 1200, 100, 100 });
@@ -181,6 +195,7 @@ bool Marge::Start() {
 	AddAnimation("jump_attack_3", jump_attack_3);
 
 	Animation damage_1;
+	damage_1.name = "damage_1";
 	damage_1.frames.push_back({ 0, 1300, 100, 100 });
 	damage_1.frames.push_back({ 100, 1300, 100, 100 });
 	damage_1.speed = 0.17f;
@@ -190,6 +205,7 @@ bool Marge::Start() {
 
 
 	Animation damage_2;
+	damage_2.name = "damage_2";
 	damage_2.frames.push_back({ 0, 1400, 100, 100 });
 	damage_2.frames.push_back({ 100, 1400, 100, 100 });
 	damage_2.frames.push_back({ 200, 1400, 100, 100 });
@@ -200,6 +216,7 @@ bool Marge::Start() {
 	AddAnimation("damage_2", damage_2);
 
 	Animation recover;
+	recover.name = "recover";
 	recover.frames.push_back({ 0, 1500, 100, 100 });
 	recover.frames.push_back({ 100, 1500, 100, 100 });
 	recover.frames.push_back({ 200, 1500, 100, 100 });
@@ -210,6 +227,7 @@ bool Marge::Start() {
 	AddAnimation("recover", recover);
 
 	Animation dead;
+	dead.name = "dead";
 	dead.frames.push_back({ 0, 1600, 100, 100 });
 	dead.frames.push_back({ 100, 1600, 100, 100 });
 	dead.speed = 0.1f;

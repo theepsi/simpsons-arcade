@@ -31,7 +31,6 @@ public:
 	list<Animation*> background_animations;
 	list<Animation*> foreground_animations;
 	SDL_Rect* section = new SDL_Rect({ 0, 0, 2304, 252 });
-
 };
 
 #endif

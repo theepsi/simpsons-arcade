@@ -42,7 +42,7 @@ int main(int argc, char ** argv)
 	App->scene_manager->AddGameObjectToScene(enemy_2);
 	App->scene_manager->AddGameObjectToScene(enemy_3);
 	App->scene_manager->AddGameObjectToScene(player);
-	App->scene_manager->AddSceneLimitations(2200, -20, 165, 88);
+	App->scene_manager->AddSceneLimitations(1760, -20, 165, 88);
 
 	int main_return = App->GameLoop();
 
