@@ -156,6 +156,8 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="marge.cpp" />
     <ClCompile Include="margeAttack1State.cpp" />
+    <ClCompile Include="margeDamagedState.cpp" />
+    <ClCompile Include="margeDeadState.cpp" />
     <ClCompile Include="margeIdleState.cpp" />
     <ClCompile Include="margeJumpAttackState.cpp" />
     <ClCompile Include="margeJumpState.cpp" />
@@ -175,6 +177,8 @@
     <ClInclude Include="homer.h" />
     <ClInclude Include="marge.h" />
     <ClInclude Include="margeAttack1State.h" />
+    <ClInclude Include="margeDamagedState.h" />
+    <ClInclude Include="margeDeadState.h" />
     <ClInclude Include="margeIdleState.h" />
     <ClInclude Include="margeJumpAttackState.h" />
     <ClInclude Include="margeJumpState.h" />

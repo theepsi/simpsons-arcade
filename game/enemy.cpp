@@ -33,7 +33,7 @@ bool Enemy::OnEnterCollision(Collider& source, Collider& affected)
 		RecieveDamage(1);
 	}
 	if (affected.col_against == CollisionAgainst::PLAYER_COLLISION) {
-		if (!damaged)
+		if (!damaged && !after_attack)
 			Attack();		
 	}
 	return true;

@@ -21,7 +21,6 @@ void RoydDamagedState::Update(Character& player)
 
 	Animation* anim = player.GetCurrentAnimation();
 
-	float last_frame = (float)anim->frames.size();
 	if (anim->Finished())
 	{
 		if (!player.recovering) {

@@ -2,7 +2,7 @@
 #include "royd.h"
 #include "player.h"
 #include "enemy.h"
-#include "roydIdleState.h"
+#include "roydWalkingState.h"
 #include "roydDamagedState.h"
 #include "roydDeadState.h"
 #include "roydAttackState.h"
@@ -30,7 +30,6 @@ void RoydAttackState::Update(Character& player)
 
 	Animation* anim = player.GetCurrentAnimation();
 
-	float last_frame = (float)anim->frames.size();
 	if (anim->Finished())
 	{
 		if (player.collider_attack != nullptr) {
@@ -38,6 +37,6 @@ void RoydAttackState::Update(Character& player)
 			player.collider_attack = nullptr;
 		}
 		enemy->attacking = false;
-		player.ChangeState(new RoydIdleState, "idle");
+		player.ChangeState(new RoydWalkingState, "walking");
 	}
 }

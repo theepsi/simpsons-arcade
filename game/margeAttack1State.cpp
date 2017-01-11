@@ -49,7 +49,6 @@ void MargeAttack1State::Update(Character& player)
 	
 	Animation* anim = player.GetCurrentAnimation();
 
-	float last_frame = (float)anim->frames.size();
 	if (anim->Finished())
 	{
 		if (player.collider_attack != nullptr) {

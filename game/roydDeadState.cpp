@@ -16,11 +16,11 @@ void RoydDeadState::Update(Character& player)
 {
 	Animation* anim = player.GetCurrentAnimation();
 
-	float last_frame = (float)anim->frames.size();
 	if (anim->Finished())
 	{
-		//TODO:clean attack collider¿?
 		player.collider->to_delete = true;
+		if (player.collider_attack != nullptr)
+			player.collider_attack->to_delete = true;
 		player.SetEnabled(false);
 	}
 }

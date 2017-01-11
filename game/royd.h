@@ -15,6 +15,7 @@ public:
 	void RecieveDamage(int amount);
 	void Attack() {
 		if (!attacking) {
+			after_attack = true;
 			attacking = true;
 			int attack = 1 + (rand() % (int)(2 - 1 + 1));
 			//TODO: decide wich attack do 1 or 2

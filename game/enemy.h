@@ -25,6 +25,11 @@ public:
 
 	bool attacking = false;
 
+	bool after_attack = false;
+
+	int random_moves_counter = 0;
+	int random_moves = 50;
+
 protected:
 	list<GameObject*> players_on_screen;
 

@@ -39,7 +39,8 @@ void Player::Update() {
 		camera_attached = !camera_attached;
 	if (App->input->GetKey(SDL_SCANCODE_F1) == KEY_DOWN)
 		debug = !debug;
-	
+	if (App->input->GetKey(SDL_SCANCODE_F3) == KEY_DOWN)
+		god_mode = !god_mode;
 
 	if (camera_attached) {
 		if (position.x > (abs(App->renderer->camera.x) / SCREEN_SIZE + App->renderer->camera.w / SCREEN_SIZE) - CAMERA_SCREEN_OFFSET_X) {
@@ -59,11 +60,15 @@ void Player::Update() {
 	state->Update(*this);
 
 	if (debug) {
-		//TODO: TEXT TEST
+		//DEBUG POSITION
 		ostringstream oss;
 		oss << "x: " << position.x << " y: " << position.y << " z: " << position.z;
 		string coords = oss.str();
-		App->fonts->Blit(0 - App->renderer->camera.x / SCREEN_SIZE, 0 - App->renderer->camera.y / SCREEN_SIZE, font, coords);
+		App->fonts->Blit(0 - App->renderer->camera.x / SCREEN_SIZE, (0 - App->renderer->camera.y + App->renderer->camera.h - 35)/ SCREEN_SIZE, font, coords);
+	}
+	if (god_mode) {
+		//GOD MODE ON
+		App->fonts->Blit((0 - App->renderer->camera.x + App->renderer->camera.w - 300)/ SCREEN_SIZE, (0 - App->renderer->camera.y + App->renderer->camera.h - 35) / SCREEN_SIZE, font, "god mode: on");
 	}
 	
 }
@@ -85,9 +90,9 @@ void Player::ApplySceneLimits()
 bool Player::OnEnterCollision(Collider& source, Collider& affected)
 {
 	if (affected.col_against == CollisionAgainst::ENEMY_ATTACK_COLISION) {
-		LOG("HITTED BY ENEMY");
-		//TODO: DO DAMAGE HERE;
-		//DAMAGED ANIMATION
+		//TODO: DO DAMAGE HERE (calculate it);
+		if(!respawning && !god_mode)
+			RecieveDamage(1);
 	}
 	return true;
 }

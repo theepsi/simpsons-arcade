@@ -1,6 +1,7 @@
 #include "core.h"
 #include "marge.h"
 #include "ModuleTextures.h"
+#include "margeDamagedState.h"
 #include "margeIdleState.h"
 
 Marge::Marge() {
@@ -140,8 +141,11 @@ bool Marge::Start() {
 
 	Animation dizzy;
 	dizzy.frames.push_back({ 0, 1000, 100, 100 });
+	dizzy.frames.push_back({ 0, 1000, 0, 100 });
 	dizzy.frames.push_back({ 100, 1000, 100, 100 });
+	dizzy.frames.push_back({ 0, 1000, 0, 100 });
 	dizzy.frames.push_back({ 200, 1000, 100, 100 });
+	dizzy.frames.push_back({ 0, 1000, 0, 100 });
 	dizzy.frames.push_back({ 300, 1000, 100, 100 });
 	dizzy.speed = 0.17f;
 	dizzy.loop = true;
@@ -181,6 +185,35 @@ bool Marge::Start() {
 
 	AddAnimation("damage_1", damage_1);
 
+
+	Animation damage_2;
+	damage_2.frames.push_back({ 0, 1400, 100, 100 });
+	damage_2.frames.push_back({ 100, 1400, 100, 100 });
+	damage_2.frames.push_back({ 200, 1400, 100, 100 });
+	damage_2.frames.push_back({ 300, 1400, 100, 100 });
+	damage_2.speed = 0.17f;
+	damage_2.loop = false;
+
+	AddAnimation("damage_2", damage_2);
+
+	Animation recover;
+	recover.frames.push_back({ 0, 1500, 100, 100 });
+	recover.frames.push_back({ 100, 1500, 100, 100 });
+	recover.frames.push_back({ 200, 1500, 100, 100 });
+	recover.frames.push_back({ 300, 1500, 100, 100 });
+	recover.speed = 0.17f;
+	recover.loop = false;
+
+	AddAnimation("recover", recover);
+
+	Animation dead;
+	dead.frames.push_back({ 0, 1600, 100, 100 });
+	dead.frames.push_back({ 100, 1600, 100, 100 });
+	dead.speed = 0.1f;
+	dead.loop = true;
+
+	AddAnimation("dead", dead);
+
 	//TODO: ADD MORE ANIMATIONS
 	SDL_Rect coll_rect = { position.x, position.y, 30, 60 };
 	x_offset = 35;
@@ -194,7 +227,14 @@ bool Marge::Start() {
 
 void Marge::RecieveDamage(int amount)
 {
-	//TODO: do 
+	if (!damaged) {
+		life -= amount;
+		damaged = true;
+		if (life <= 0) {
+			life = 0;
+		}
+		ChangeState(new MargeDamagedState, "damage_2");
+	}
 }
 
 
