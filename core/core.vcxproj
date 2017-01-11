@@ -159,7 +159,6 @@
     <ClInclude Include="ModuleFadeToBlack.h" />
     <ClInclude Include="ModuleFonts.h" />
     <ClInclude Include="ModuleInput.h" />
-    <ClInclude Include="ModuleParticles.h" />
     <ClInclude Include="ModuleRender.h" />
     <ClInclude Include="ModuleSceneManager.h" />
     <ClInclude Include="ModuleTextures.h" />
@@ -176,7 +175,6 @@
     <ClCompile Include="ModuleFadeToBlack.cpp" />
     <ClCompile Include="ModuleFonts.cpp" />
     <ClCompile Include="ModuleInput.cpp" />
-    <ClCompile Include="ModuleParticles.cpp" />
     <ClCompile Include="ModuleRender.cpp" />
     <ClCompile Include="ModuleSceneManager.cpp" />
     <ClCompile Include="ModuleTextures.cpp" />

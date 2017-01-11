@@ -27,7 +27,7 @@ public:
 
 	bool CleanUp();
 
-	//TODO: no need to implement collisions on UI
+	//No need to implement collisions on UI
 	bool OnEnterCollision(Collider& source, Collider& affected) { return false; };
 
 	SDL_Texture* texture;

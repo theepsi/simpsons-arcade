@@ -34,7 +34,7 @@ void Player::Update() {
 
 	App->renderer->PriorityBlit3D(texture, position.x, position.y, position.z, current_frame, 1.f, flipped);
 
-	//TODO: move camera (on X) only if there are no enemies on screen.
+	//TODO: Allow Camera to move if no enemies.
 
 	if (App->input->GetKey(SDL_SCANCODE_F2) == KEY_DOWN)
 		camera_attached = !camera_attached;
@@ -91,7 +91,7 @@ void Player::ApplySceneLimits()
 bool Player::OnEnterCollision(Collider& source, Collider& affected)
 {
 	if (affected.col_against == CollisionAgainst::ENEMY_ATTACK_COLISION) {
-		//TODO: DO DAMAGE HERE (calculate it);
+		//TODO:calculate damage;
 		if(!respawning && !god_mode)
 			RecieveDamage(1);
 	}

@@ -6,7 +6,6 @@
 #include "ModuleAudio.h"
 #include "ModuleFadeToBlack.h"
 #include "ModuleCollision.h"
-#include "ModuleParticles.h"
 #include "ModuleSceneManager.h"
 #include "ModuleFonts.h"
 
@@ -30,7 +29,6 @@ Core::Core()
 
 	// Modules to draw on top of game logic
 	modules.push_back(collision = new ModuleCollision());
-	modules.push_back(particles = new ModuleParticles());
 	modules.push_back(fade = new ModuleFadeToBlack());
 
 	App = this;
@@ -55,7 +53,7 @@ bool Core::Init()
 			ret = (*it)->Start();
 	}
 
-	// Start the first scene --
+	//Start the first scene --
 	//fade->FadeToBlack(scene_intro, nullptr, 3.0f);
 
 	return ret;

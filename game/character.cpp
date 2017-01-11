@@ -3,6 +3,7 @@
 #include "ModuleRender.h"
 #include "ModuleInput.h"
 #include "ModuleFonts.h"
+#include "Moduleaudio.h"
 #include "state.h"
 
 #include <sstream>
@@ -17,6 +18,7 @@ Character::~Character() {
 
 bool Character::Start()
 {
+	hit_fx = App->audio->LoadFx("resources/audio/SFX/hit.wav");
 	font = App->fonts->Load("resources/fonts/simpsons-font.png", "abcdefghijklmnopqrstuvwxyz0123456789.,'''?!@_#$%&()+-/:", 1);
 	return true;
 }

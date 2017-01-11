@@ -3,6 +3,9 @@
 #include "ModuleTextures.h"
 #include "margeDamagedState.h"
 #include "margeIdleState.h"
+#include "ModuleAudio.h"
+#include "margeAttack1State.h"
+#include "margeJumpAttackState.h"
 
 Marge::Marge() {
 
@@ -214,7 +217,6 @@ bool Marge::Start() {
 
 	AddAnimation("dead", dead);
 
-	//TODO: ADD MORE ANIMATIONS
 	SDL_Rect coll_rect = { position.x, position.y, 30, 60 };
 	x_offset = 35;
 	y_offset = 40;
@@ -233,7 +235,25 @@ void Marge::RecieveDamage(int amount)
 		if (life <= 0) {
 			life = 0;
 		}
+		App->audio->PlayFx(hit_fx);
 		ChangeState(new MargeDamagedState, "damage_2");
+	}
+}
+
+void Marge::Attack(bool jumping) {
+	if (attack_counter < 2) {
+		if (jumping)
+			ChangeState(new MargeJumpAttackState, "jump_attack_1");
+		else
+			ChangeState(new MargeAttack1State, "attack_1");
+		attack_counter += 1;
+	}
+	else {
+		if (jumping)
+			ChangeState(new MargeJumpAttackState, "jump_attack_2");
+		else
+			ChangeState(new MargeAttack1State, "attack_2");
+		attack_counter = 0;
 	}
 }
 

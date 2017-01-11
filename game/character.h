@@ -73,6 +73,7 @@ public:
 	bool damaged = false;
 	bool recovering = false;
 	int life = 2;
+	unsigned int hit_fx;
 
 protected:
 	map<string, Animation> animations;

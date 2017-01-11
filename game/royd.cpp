@@ -3,6 +3,8 @@
 #include "ModuleTextures.h"
 #include "roydIdleState.h"
 #include "roydDamagedState.h"
+#include "roydAttackState.h"
+#include "ModuleAudio.h"
 
 Royd::Royd()
 {
@@ -17,6 +19,8 @@ bool Royd::Start()
 	/*position.x = 50;
 	position.y = 0;
 	position.z = 102;*/
+
+	Enemy::Start();
 
 	speed = 1.f;
 
@@ -141,8 +145,6 @@ bool Royd::Start()
 
 	AddAnimation("dead", dead);
 	
-
-	//TODO: ADD MORE ANIMATIONS
 	SDL_Rect coll_rect = { position.x, position.y, 30, 60 };
 	x_offset = 35;
 	y_offset = 40;
@@ -159,9 +161,26 @@ void Royd::RecieveDamage(int amount)
 	if (!damaged) {
 		life -= amount;
 		damaged = true;
+		//random move after receive damage
+		after_attack = true;
 		if (life <= 0){
 			life = 0;
 		}
+		App->audio->PlayFx(hit_fx);
 		ChangeState(new RoydDamagedState, "damaged");
+	}
+}
+
+void Royd::Attack()
+{
+	if (!attacking) {
+		//random move after receive damage
+		after_attack = true;
+		attacking = true;
+		int attack = 1 + (rand() % (int)(2 - 1 + 1));
+		if (attack == 1)
+			ChangeState(new RoydAttackState, "attack_1");
+		else
+			ChangeState(new RoydAttackState, "attack_2");
 	}
 }

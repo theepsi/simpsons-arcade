@@ -1,6 +1,7 @@
 #include "core.h"
 #include "cementery.h"
 #include "ModuleTextures.h"
+#include "ModuleAudio.h"
 #include "ModuleRender.h"
 
 Cementery::Cementery()
@@ -15,6 +16,7 @@ Cementery::~Cementery()
 bool Cementery::Start()
 {
 	texture = App->textures->Load("resources/level/level_cementery_sheet.png");
+	App->audio->PlayMusic("resources/audio/cementery.wav", 2.5f);
 	return true;
 }
 
@@ -24,7 +26,6 @@ void Cementery::PreUpdate()
 
 void Cementery::Update()
 {
-	//TODO: Change this when player moves...
 	App->renderer->PriorityBlit(texture, 0, 0, -1, section);
 }
 

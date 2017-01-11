@@ -18,7 +18,6 @@ class ModuleInput;
 class ModuleAudio;
 class ModuleFadeToBlack;
 class ModuleCollision;
-class ModuleParticles;
 class ModuleFonts;
 
 // Game modules ---
@@ -53,7 +52,6 @@ public:
 	ModuleAudio* audio;
 	ModuleFadeToBlack* fade;
 	ModuleCollision* collision;
-	ModuleParticles* particles;
 	ModuleFonts* fonts;
 
 	// Game modules ---
