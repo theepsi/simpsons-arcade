@@ -11,6 +11,7 @@ public:
 	~Royd();
 
 	bool Start();
+	void RecieveDamage(int amount);
 };
 
 #endif

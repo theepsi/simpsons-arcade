@@ -192,4 +192,9 @@ bool Marge::Start() {
 	return true;
 }
 
+void Marge::RecieveDamage(int amount)
+{
+	//TODO: do 
+}
+
 

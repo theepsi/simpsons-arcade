@@ -2,7 +2,6 @@
 #include "enemy.h"
 #include "ModuleRender.h"
 #include "ModuleSceneManager.h"
-#include "ModuleFonts.h"
 #include "state.h"
 
 Enemy::Enemy()
@@ -30,8 +29,8 @@ void Enemy::Update()
 bool Enemy::OnEnterCollision(Collider& source, Collider& affected)
 {
 	if (affected.col_against == CollisionAgainst::PLAYER_ATTACK_COLISION) {
-		LOG("HITTED BY PLAYER");
-		//TODO: DO DAMAGE HERE;
+		//TODO: calculate damage
+		RecieveDamage(1);
 	}
 	return true;
 }
@@ -45,4 +44,5 @@ Player * Enemy::GetCloserPlayer()
 	//TODO: this return if for testing
 	return (Player*)players_on_screen.front();
 }
+
 

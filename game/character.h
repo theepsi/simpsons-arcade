@@ -68,6 +68,12 @@ public:
 	Collider* collider_attack = nullptr;
 	ModuleFonts::Font* font = nullptr;
 
+	virtual void RecieveDamage(int amount) = 0;
+
+	bool damaged = false;
+	bool recovering = false;
+	int life = 2;
+
 protected:
 	map<string, Animation> animations;
 	Animation current_animation;

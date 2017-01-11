@@ -14,6 +14,8 @@ public:
 
 	int attack_counter = 0;
 
+	void RecieveDamage(int amount);
+
 	void Attack(bool jumping) {
 		if (attack_counter < 2) {
 			if (jumping)

@@ -35,6 +35,10 @@ public:
 		return enabled;
 	}
 
+	void SetEnabled(bool enable) {
+		enabled = enable;
+	}
+
 	iPoint3D position;
 	GameObjectType type = GameObjectType::UNKNOWN_ENTITY;
 private:

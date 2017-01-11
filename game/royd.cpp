@@ -2,6 +2,7 @@
 #include "royd.h"
 #include "ModuleTextures.h"
 #include "roydIdleState.h"
+#include "roydDamagedState.h"
 
 Royd::Royd()
 {
@@ -70,6 +71,75 @@ bool Royd::Start()
 	walking_down.speed = 0.17f;
 
 	AddAnimation("walking_down", walking_down);
+
+	Animation attack_1;
+	attack_1.name = "attack_1";
+	attack_1.frames.push_back({ 0, 400, 100, 100 });
+	attack_1.frames.push_back({ 100, 400, 100, 100 });
+	attack_1.frames.push_back({ 200, 400, 100, 100 });
+	attack_1.frames.push_back({ 300, 400, 100, 100 });
+	attack_1.frames.push_back({ 400, 400, 100, 100 });
+	attack_1.frames.push_back({ 500, 400, 100, 100 });
+	attack_1.frames.push_back({ 600, 400, 100, 100 });
+	attack_1.speed = 0.17f;
+
+	AddAnimation("attack_1", attack_1);
+
+	Animation attack_2;
+	attack_2.name = "attack_2";
+	attack_2.frames.push_back({ 0, 500, 100, 100 });
+	attack_2.frames.push_back({ 100, 500, 100, 100 });
+	attack_2.frames.push_back({ 200, 500, 100, 100 });
+	attack_2.frames.push_back({ 300, 500, 100, 100 });
+	attack_2.speed = 0.17f;
+	attack_2.loop = false;
+
+	AddAnimation("attack_2", attack_2);
+
+	Animation damaged;
+	damaged.name = "damaged";
+	damaged.frames.push_back({ 0, 600, 100, 100 });
+	damaged.frames.push_back({ 100, 600, 100, 100 });
+	damaged.frames.push_back({ 200, 600, 100, 100 });
+	damaged.frames.push_back({ 300, 600, 100, 100 });
+	damaged.frames.push_back({ 400, 600, 100, 100 });
+	damaged.frames.push_back({ 500, 600, 100, 100 });
+	damaged.frames.push_back({ 600, 600, 100, 100 });
+	damaged.speed = 0.17f;
+	damaged.loop = false;
+
+	AddAnimation("damaged", damaged);
+
+	Animation recover;
+	recover.name = "recover";
+	recover.frames.push_back({ 0, 700, 100, 100 });
+	recover.frames.push_back({ 100, 700, 100, 100 });
+	recover.frames.push_back({ 0, 700, 100, 100 });
+	recover.frames.push_back({ 100, 700, 100, 100 });
+	recover.frames.push_back({ 200, 700, 100, 100 });
+	recover.frames.push_back({ 300, 700, 100, 100 });
+	recover.frames.push_back({ 200, 700, 100, 100 });
+	recover.frames.push_back({ 300, 700, 100, 100 });
+	recover.frames.push_back({ 400, 700, 100, 100 });
+	recover.speed = 0.17f;
+	recover.loop = false;
+
+	AddAnimation("recover", recover);
+
+	Animation dead;
+	dead.name = "dead";
+	dead.frames.push_back({ 0, 800, 100, 100 });
+	dead.frames.push_back({ 100, 800, 100, 100 });
+	dead.frames.push_back({ 200, 800, 100, 100 });
+	dead.frames.push_back({ 0, 800, 0, 100 });
+	dead.frames.push_back({ 300, 800, 100, 100 });
+	dead.frames.push_back({ 0, 800, 0, 100 });
+	dead.frames.push_back({ 300, 800, 100, 100 });
+	dead.frames.push_back({ 0, 800, 0, 100 });
+	dead.speed = 0.17f;
+	dead.loop = false;
+
+	AddAnimation("dead", dead);
 	
 
 	//TODO: ADD MORE ANIMATIONS
@@ -82,4 +152,16 @@ bool Royd::Start()
 	ChangeState(new RoydIdleState, "idle");
 
 	return true;
+}
+
+void Royd::RecieveDamage(int amount)
+{
+	if (!damaged) {
+		life -= amount;
+		damaged = true;
+		if (life <= 0){
+			life = 0;
+		}
+		ChangeState(new RoydDamagedState, "damaged");
+	}
 }

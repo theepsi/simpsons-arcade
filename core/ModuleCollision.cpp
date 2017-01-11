@@ -48,7 +48,6 @@ update_status ModuleCollision::Update()
 		{
 			Collider* col2 = (*it2);
 			if (collisionMatrix[col->col_against][col2->col_against] && col->CheckCollision(col2->rect, col2->position_z)) {
-				//TODO: Notification stuff
 				col->referenced_object->OnEnterCollision(*col, *col2);
 				col2->referenced_object->OnEnterCollision(*col2, *col);
 			}
