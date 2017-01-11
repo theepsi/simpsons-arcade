@@ -1,6 +1,6 @@
 # Tribute Game: The Simpsons Arcade
 
-I paid a tribute to an old school arcade game by reproducing some of its features with SDL to create a single playable demo. 
+I paid a tribute to an old school arcade game by reproducing some of its features with SDL to create a single playable demo.
 
 ## How to play
 
@@ -18,6 +18,8 @@ I paid a tribute to an old school arcade game by reproducing some of its feature
 
 This game is a tribute to the old school game "The Simpsons Arcade".
 In this demo you will find a reproduction of the Cementery Level of the game but just with one enemy due to the lack of spritesheets over Internet. 
+
+[![Game Demo](http://img.youtube.com/vi/PgLJeB_3xRM/0.jpg)](https://www.youtube.com/watch?v=PgLJeB_3xRM "Game Demo")
 
 ## How to build
 
