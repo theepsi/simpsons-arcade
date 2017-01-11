@@ -2,6 +2,9 @@
 
 I paid a tribute to an old school arcade game by reproducing some of its features with SDL to create a single playable demo.
 
+## Download the game
+[Release Windows V0.0.2](https://github.com/theepsi/simpsons-arcade/releases/download/0.0.2/simpsons-arcade.zip)
+
 ## How to play
 
 `[W|A|S|D]` - To move in the scene.
