@@ -86,6 +86,9 @@ void Player::ApplySceneLimits()
 		position.z = scene->z_min;
 	else if (position.z > scene->z_max)
 		position.z = scene->z_max;
+	if (position.x > ((abs(App->renderer->camera.x) + App->renderer->camera.w - CAMERA_SCREEN_OFFSET_X) / SCREEN_SIZE)) {
+		position.x = (abs(App->renderer->camera.x) + App->renderer->camera.w - CAMERA_SCREEN_OFFSET_X) / SCREEN_SIZE;
+	}
 }
 
 bool Player::OnEnterCollision(Collider& source, Collider& affected)
