@@ -14,9 +14,9 @@ Royd::~Royd()
 
 bool Royd::Start()
 {
-	position.x = 50;
+	/*position.x = 50;
 	position.y = 0;
-	position.z = 102;
+	position.z = 102;*/
 
 	speed = 1.f;
 
@@ -143,7 +143,7 @@ bool Royd::Start()
 	
 
 	//TODO: ADD MORE ANIMATIONS
-	SDL_Rect coll_rect = { 0, 0, 30, 60 };
+	SDL_Rect coll_rect = { position.x, position.y, 30, 60 };
 	x_offset = 35;
 	y_offset = 40;
 	collider = App->collision->AddCollider(coll_rect, position.z, this, CollisionAgainst::ENEMY_COLLISION);

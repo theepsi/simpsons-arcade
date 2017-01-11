@@ -162,6 +162,7 @@
     <ClCompile Include="margeWalkingState.cpp" />
     <ClCompile Include="player.cpp" />
     <ClCompile Include="royd.cpp" />
+    <ClCompile Include="roydAttackState.cpp" />
     <ClCompile Include="roydDamagedState.cpp" />
     <ClCompile Include="roydDeadState.cpp" />
     <ClCompile Include="roydIdleState.cpp" />
@@ -180,6 +181,7 @@
     <ClInclude Include="margeWalkingState.h" />
     <ClInclude Include="player.h" />
     <ClInclude Include="royd.h" />
+    <ClInclude Include="roydAttackState.h" />
     <ClInclude Include="roydDamagedState.h" />
     <ClInclude Include="roydDeadState.h" />
     <ClInclude Include="roydIdleState.h" />

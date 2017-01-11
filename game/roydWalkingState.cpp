@@ -20,6 +20,8 @@ void RoydWalkingState::Update(Character& player)
 	Enemy* enemy = static_cast<Enemy*>(&player);
 	Player* enemy_objective = enemy->objective;
 
+	enemy->attacking = false;
+
 	if (enemy->position.x < enemy_objective->position.x + MIN_DISTANCE &&
 		enemy->position.x > enemy_objective->position.x - MIN_DISTANCE) {
 		if (enemy->flipped)

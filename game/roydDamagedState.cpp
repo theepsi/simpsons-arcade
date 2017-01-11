@@ -16,6 +16,9 @@ RoydDamagedState::~RoydDamagedState()
 
 void RoydDamagedState::Update(Character& player)
 {
+	Enemy* enemy = static_cast<Enemy*>(&player);
+	enemy->attacking = false;
+
 	Animation* anim = player.GetCurrentAnimation();
 
 	float last_frame = (float)anim->frames.size();

@@ -32,6 +32,10 @@ bool Enemy::OnEnterCollision(Collider& source, Collider& affected)
 		//TODO: calculate damage
 		RecieveDamage(1);
 	}
+	if (affected.col_against == CollisionAgainst::PLAYER_COLLISION) {
+		if (!damaged)
+			Attack();		
+	}
 	return true;
 }
 
@@ -44,5 +48,6 @@ Player * Enemy::GetCloserPlayer()
 	//TODO: this return if for testing
 	return (Player*)players_on_screen.front();
 }
+
 
 

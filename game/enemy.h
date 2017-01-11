@@ -21,6 +21,10 @@ public:
 
 	Player* GetCloserPlayer();
 
+	virtual void Attack() = 0;
+
+	bool attacking = false;
+
 protected:
 	list<GameObject*> players_on_screen;
 

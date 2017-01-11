@@ -18,6 +18,8 @@ void RoydIdleState::Update(Character& player)
 	Enemy* enemy = static_cast<Enemy*>(&player);
 	Player* enemy_objective = enemy->objective;
 
+	enemy->attacking = false;
+
 	if (enemy->position.x > enemy_objective->position.x) {
 		enemy->flipped = true;
 	}

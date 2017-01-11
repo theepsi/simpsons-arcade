@@ -87,6 +87,7 @@ bool Player::OnEnterCollision(Collider& source, Collider& affected)
 	if (affected.col_against == CollisionAgainst::ENEMY_ATTACK_COLISION) {
 		LOG("HITTED BY ENEMY");
 		//TODO: DO DAMAGE HERE;
+		//DAMAGED ANIMATION
 	}
 	return true;
 }
