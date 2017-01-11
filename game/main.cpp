@@ -17,6 +17,7 @@ int main(int argc, char ** argv)
 	Royd* enemy_3 = new Royd();
 	Cementery* cement = new Cementery();
 	UI* ui = new UI();
+	player->AttachUI(ui);
 
 	//TODO: just testing, need to load enemys when aproaching...
 	enemy_1->position.x = 300;

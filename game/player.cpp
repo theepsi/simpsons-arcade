@@ -6,6 +6,7 @@
 #include "ModuleSceneManager.h"
 #include "ModuleCollision.h"
 #include "Scene.h"
+#include "UI.h"
 #include "state.h"
 
 #define CAMERA_SCREEN_OFFSET_X 180       //OFFSET for the camera, the scene will move right/down/up when player hits this offset.
@@ -19,7 +20,7 @@
 Player::Player()
 {
 	type = GameObjectType::PLAYER_ENTITY;
-	life = 5;
+	life = 4;
 }
 
 Player::~Player()
@@ -28,6 +29,8 @@ Player::~Player()
 
 void Player::Update() {
 
+	ui->ApplyDamageToUI(life);
+	ui->GetContinues(continues);
 	ApplySceneLimits();
 
 	SDL_Rect* current_frame = &current_animation.GetCurrentFrame();

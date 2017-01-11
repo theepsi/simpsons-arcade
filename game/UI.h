@@ -5,7 +5,10 @@
 #include "Animation.h"
 #include "state.h"
 #include <map>
+#include <list>
 #include "ModuleFonts.h"
+
+using namespace std;
 
 class ModuleFonts;
 
@@ -30,8 +33,22 @@ public:
 	//No need to implement collisions on UI
 	bool OnEnterCollision(Collider& source, Collider& affected) { return false; };
 
+	void GetContinues(int continues) {
+		this->continues = continues;
+	};
+
+	void ApplyDamageToUI(int amount);
+
 	SDL_Texture* texture;
-	Animation animation;
+	Animation base_UI;
+
+	Animation* current_life_counter;
+
+	ModuleFonts::Font* font;
+
+	list<Animation*> life_counter_sprites;
+
+	int continues;
 
 };
 

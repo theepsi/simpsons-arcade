@@ -2,6 +2,7 @@
 #define _PLAYER
 
 #include "character.h"
+#include "UI.h"
 
 class Player : public Character {
 public:
@@ -12,6 +13,10 @@ public:
 	bool OnEnterCollision(Collider& source, Collider& affected);
 	int continues = 0; //debug resu
 	bool respawning = false;
+	void AttachUI(UI* ui) {
+		this->ui = ui;
+	};
+	UI* ui;
 
 private:
 	bool debug = false;
