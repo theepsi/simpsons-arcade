@@ -21,9 +21,9 @@ void MargeAttack1State::Update(Character& player)
 	if (player.collider_attack == nullptr) {
 		SDL_Rect coll_rect = { 0,0,0,0 };
 		if (player.flipped)
-			coll_rect = { player.position.x + player.x_offset - 30, player.position.y + player.y_offset, 30, 30 };
+			coll_rect = { player.position.x + player.x_offset - 25, player.position.y + player.y_offset, 25, 25 };
 		else
-			coll_rect = { player.position.x + player.x_offset + 30, player.position.y + player.y_offset, 30, 30 };
+			coll_rect = { player.position.x + player.x_offset + player.collider->rect.w, player.position.y + player.y_offset, 25, 25 };
 		player.collider_attack = App->collision->AddCollider(coll_rect, player.position.z, &player, CollisionAgainst::PLAYER_ATTACK_COLISION);
 	}
 	

@@ -13,6 +13,7 @@ public:
 
 private:
 	bool debug = false;
+	bool camera_attached = true;
 
 };
 

@@ -36,10 +36,12 @@ void Player::Update() {
 	//TODO: move camera (on X) only if there are no enemies on screen.
 
 	if (App->input->GetKey(SDL_SCANCODE_F2) == KEY_DOWN)
+		camera_attached = !camera_attached;
+	if (App->input->GetKey(SDL_SCANCODE_F1) == KEY_DOWN)
 		debug = !debug;
 	
 
-	if (!debug) {
+	if (camera_attached) {
 		if (position.x > (abs(App->renderer->camera.x) / SCREEN_SIZE + App->renderer->camera.w / SCREEN_SIZE) - CAMERA_SCREEN_OFFSET_X) {
 			App->renderer->camera.x -= (int)speed * SCREEN_SIZE;
 		}
@@ -56,11 +58,14 @@ void Player::Update() {
 	}
 	state->Update(*this);
 
-	//TODO: TEXT TEST
-	ostringstream oss;
-	oss << "x: " << position.x << " y: " << position.y << " z: " << position.z;
-	string coords = oss.str();
-	App->fonts->Blit(0 - App->renderer->camera.x / SCREEN_SIZE, 0 - App->renderer->camera.y / SCREEN_SIZE, font, coords);
+	if (debug) {
+		//TODO: TEXT TEST
+		ostringstream oss;
+		oss << "x: " << position.x << " y: " << position.y << " z: " << position.z;
+		string coords = oss.str();
+		App->fonts->Blit(0 - App->renderer->camera.x / SCREEN_SIZE, 0 - App->renderer->camera.y / SCREEN_SIZE, font, coords);
+	}
+	
 }
 
 void Player::ApplySceneLimits()
