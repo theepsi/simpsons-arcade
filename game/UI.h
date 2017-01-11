@@ -1,16 +1,22 @@
-#ifndef _CEMENTERY
-#define _CEMENTERY
+#ifndef _UI
+#define _UI
 
 #include "gameObject.h"
 #include "Animation.h"
+#include "state.h"
+#include <map>
+#include "ModuleFonts.h"
+
+class ModuleFonts;
 
 struct SDL_Texture;
-struct SDL_Rect;
+class State;
+struct Collider;
 
-class Cementery : public GameObject {
+class UI : public GameObject {
 public:
-	Cementery();
-	~Cementery();
+	UI();
+	~UI();
 	bool Start();
 
 	void PreUpdate();
@@ -21,13 +27,13 @@ public:
 
 	bool CleanUp();
 
-	//TODO: no need to implement collisions on Cementery for now
+	//TODO: no need to implement collisions on UI
 	bool OnEnterCollision(Collider& source, Collider& affected) { return false; };
 
 	SDL_Texture* texture;
-	Animation animations;
-	SDL_Rect* section = new SDL_Rect({ 4, 262, 2304, 256 });
+	Animation animation;
 
 };
 
 #endif
+

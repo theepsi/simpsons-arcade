@@ -19,6 +19,7 @@
 Player::Player()
 {
 	type = GameObjectType::PLAYER_ENTITY;
+	life = 5;
 }
 
 Player::~Player()
