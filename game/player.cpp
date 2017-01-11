@@ -11,7 +11,7 @@
 #define CAMERA_SCREEN_OFFSET_X 180       //OFFSET for the camera, the scene will move right/down/up when player hits this offset.
 #define CAMERA_SCREEN_OFFSET_Y 120  
 
-#define CAMERA_LIMIT_DOWN 10
+#define CAMERA_LIMIT_DOWN 8
 
 #include <sstream>
 

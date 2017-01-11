@@ -3,6 +3,9 @@
 
 #include "gameObject.h"
 #include "Animation.h"
+#include <list>
+
+using namespace std;
 
 struct SDL_Texture;
 struct SDL_Rect;
@@ -25,8 +28,9 @@ public:
 	bool OnEnterCollision(Collider& source, Collider& affected) { return false; };
 
 	SDL_Texture* texture;
-	Animation animations;
-	SDL_Rect* section = new SDL_Rect({ 4, 262, 2304, 256 });
+	list<Animation*> background_animations;
+	list<Animation*> foreground_animations;
+	SDL_Rect* section = new SDL_Rect({ 0, 0, 2304, 252 });
 
 };
 
