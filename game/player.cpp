@@ -23,7 +23,7 @@ Player::Player()
 {
 	type = GameObjectType::PLAYER_ENTITY;
 	life = 4;
-	continues = 0;
+	continues = 4;
 	respawning = 0;
 }
 
