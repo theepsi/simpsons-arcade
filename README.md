@@ -1,37 +1,32 @@
-## Welcome to GitHub Pages
+# Tribute Game: The Simpsons Arcade
+I paid a tribute to an old school arcade game by reproducing some of its features with SDL to create a single playable demo. 
+## How to play
+`[W|A|S|D]` - To move in the scene.
+`[J]` - To jump.
+`[K]` - To Attack.
 
-You can use the [editor on GitHub](https://github.com/theepsi/simpsons-arcade/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+-Debug Options
+`[F1]` - Show colliders and player coordinates.
+`[F2]` - Free Camera (still working on it).
+`[F3]` - God Mode: Turns you invulnerable.
+## Description
+This game is a tribute to the old school game "The Simpsons Arcade".
+In this demo you will find a reproduction of the Cementery Level of the game but just with one enemy due to the lack of spritesheets over Internet. 
+## How to build
+### Windows
+With Visual Studio you need to put the Debug in x86 and modify the Game project properties to use the 'debugging' in `$(SolutionDir)external` instead of the default one.
+### Linux
+TODO
+### MacOS
+TODO
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+## Links
+Link to repository: https://github.com/theepsi/simpsons-arcade
 
-### Markdown
+## Authors
+* [Ennio Casas Puglielli](https://github.com/theepsi)
+    * email: ennio.casas@gmail.com
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+## License
 
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/theepsi/simpsons-arcade/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+MIT
