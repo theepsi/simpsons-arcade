@@ -3,7 +3,8 @@
 I paid a tribute to an old school arcade game by reproducing some of its features with SDL to create a single playable demo.
 
 ## Download the game
-[Release Windows V0.0.2](https://github.com/theepsi/simpsons-arcade/releases/download/0.0.2/simpsons-arcade.zip)
+
+[Release Windows V0.0.3](https://github.com/theepsi/simpsons-arcade/releases/download/0.0.3/simpsons-arcade-release-0-0-3.zip)
 
 ## How to play
 
@@ -41,6 +42,7 @@ TODO
 ## Links
 
 Link to repository: https://github.com/theepsi/simpsons-arcade
+Link to website: https://theepsi.github.io/simpsons-arcade/
 
 ## Authors
 
