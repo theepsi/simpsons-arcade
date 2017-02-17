@@ -93,6 +93,8 @@ bool ModuleCollision::CleanUp()
 
 	colliders.clear();
 
+	debug = false;
+
 	return true;
 }
 

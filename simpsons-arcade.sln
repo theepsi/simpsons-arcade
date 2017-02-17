@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "game", "game\game.vcxproj", "{B752BF11-5B61-4B05-A652-80B119C80748}"
+	ProjectSection(ProjectDependencies) = postProject
+		{EEBE17D2-9E54-426D-9CD2-C8FD23479311} = {EEBE17D2-9E54-426D-9CD2-C8FD23479311}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "core", "core\core.vcxproj", "{EEBE17D2-9E54-426D-9CD2-C8FD23479311}"
 EndProject

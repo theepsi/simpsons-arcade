@@ -35,11 +35,11 @@ void Player::Update() {
 
 	if (position.x >= X_END_DEMO) {
 		App->fonts->Blit((0 - App->renderer->camera.x / SCREEN_SIZE), (0 - App->renderer->camera.y + App->renderer->camera.h / 2) / SCREEN_SIZE, font, "you beat the demo");
-		App->fonts->Blit((0 - App->renderer->camera.x / SCREEN_SIZE), (0 - App->renderer->camera.y + App->renderer->camera.h / 2) / SCREEN_SIZE + 20, font, "press esc to exit the game");
+		App->fonts->Blit((0 - App->renderer->camera.x / SCREEN_SIZE), (0 - App->renderer->camera.y + App->renderer->camera.h / 2) / SCREEN_SIZE + 20, font, "press R to reload the game");
 	}
 	if (life == 0 && continues == 0) {
 		App->fonts->Blit((0 - App->renderer->camera.x / SCREEN_SIZE), (0 - App->renderer->camera.y + App->renderer->camera.h / 2) / SCREEN_SIZE, font, "you died");
-		App->fonts->Blit((0 - App->renderer->camera.x / SCREEN_SIZE), (0 - App->renderer->camera.y + App->renderer->camera.h / 2) / SCREEN_SIZE + 20, font, "press esc to exit the game");
+		App->fonts->Blit((0 - App->renderer->camera.x / SCREEN_SIZE), (0 - App->renderer->camera.y + App->renderer->camera.h / 2) / SCREEN_SIZE + 20, font, "press R to reload the game");
 	}
 	ui->ApplyDamageToUI(life);
 	ui->GetContinues(continues);

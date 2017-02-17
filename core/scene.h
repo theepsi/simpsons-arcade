@@ -47,6 +47,17 @@ public:
 		return UPDATE_CONTINUE;
 	}
 
+	bool CleanUp()
+	{
+		LOG("Cleaning Scene objects");
+		for (list<GameObject*>::iterator it = game_objects.begin(); it != game_objects.end(); ++it) {
+			(*it)->CleanUp();
+			RELEASE(*it);
+		}
+		game_objects.clear();
+		return true;
+	}
+
 	list<GameObject*> game_objects;
 	list<GameObject*> players_available;
 

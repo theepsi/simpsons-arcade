@@ -3,8 +3,6 @@
 
 #include "gameObject.h"
 #include "Animation.h"
-#include "state.h"
-#include <map>
 #include <list>
 #include "ModuleFonts.h"
 
@@ -42,7 +40,7 @@ public:
 	SDL_Texture* texture;
 	Animation base_UI;
 
-	Animation* current_life_counter;
+	Animation* current_life_counter = nullptr;
 
 	ModuleFonts::Font* font;
 

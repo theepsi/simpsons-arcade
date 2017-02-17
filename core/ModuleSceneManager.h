@@ -23,13 +23,14 @@ public:
 
 	bool CleanUp();
 
-	Scene* current_scene;
+	Scene* current_scene = nullptr;
 
 	//Scene functions
 	void AddGameObjectToScene(GameObject* gameObject);
 	list<GameObject*> GetGameObjects();
 	list<GameObject*> GetPlayersAvailable();
 	void RemovePlayerOnScreen(GameObject* gameObject);
+	void PrepareScene();
 
 	void AddSceneLimitations(const int& x_max, const int& x_min, const int& z_max, const int& z_min);
 };
