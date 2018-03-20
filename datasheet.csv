@@ -1,0 +1,14 @@
+Airline,Route,Pax ID,Bundle ID,Experience name,Time,Headset ID,Day,Month,Year,Category
+Volotea,Valencia-Paris,0,com.InflightVR.3DMoviePlayer, ,199476.0,7bcfb06f932da9f97ad7a45f22512fae,05,05,2018,Unknown
+Volotea,Valencia-Paris,0,com.InflightVR.3DMoviePlayer, ,98122.0,7bcfb06f932da9f97ad7a45f22512fae,05,05,2018,Unknown
+Volotea,Valencia-Paris,0,com.InflightVR.3DMoviePlayer, ,70134.0,7bcfb06f932da9f97ad7a45f22512fae,05,05,2018,Unknown
+Volotea,Valencia-Paris,0,com.InflightVR.3DMoviePlayer, ,159959.0,7bcfb06f932da9f97ad7a45f22512fae,05,05,2018,Unknown
+Volotea,Valencia-Paris,0,com.InflightVR.360Player, ,47593.0,7bcfb06f932da9f97ad7a45f22512fae,05,05,2018,Unknown
+Volotea,Valencia-Paris,0,nan, ,29602.0,7bcfb06f932da9f97ad7a45f22512fae,05,05,2018,Unknown
+Volotea,Valencia-Paris,0,com.InflightVR.360Player, ,90407.0,7bcfb06f932da9f97ad7a45f22512fae,05,05,2018,Unknown
+Volotea,Valencia-Paris,1,com.InflightVR.NewsRoom, ,190973.0,f1192693169a95f8a349b9beca96b61f,24,05,2018,Info
+Volotea,Valencia-Paris,1,com.InflightVR.FlightInfo, ,86738.0,f1192693169a95f8a349b9beca96b61f,24,05,2018,Info
+Volotea,Valencia-Paris,1,com.InflightVR.NewsRoom, ,21679.0,f1192693169a95f8a349b9beca96b61f,24,05,2018,Info
+Volotea,Valencia-Paris,1,com.InflightVR.360Player, ,61292.0,f1192693169a95f8a349b9beca96b61f,24,05,2018,Unknown
+Volotea,Valencia-Paris,1,com.InflightVR.NewsRoom, ,195748.0,f1192693169a95f8a349b9beca96b61f,24,05,2018,Info
+Volotea,Valencia-Paris,1,com.InflightVR.360Player, ,20068.0,f1192693169a95f8a349b9beca96b61f,24,05,2018,Unknown
